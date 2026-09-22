@@ -108,4 +108,87 @@
   - **Vrushank Shirsath:** [+91 8888909419](tel:+918888909419)
   - **Shruti S Pagaree:** [+91 8421711369](tel:+918421711369)
 
+---
+
+## 4. 🔥 STRUCTURAL SHOWDOWN 2026 — Where Creativity Meets Engineering
+- **Slug:** `structural-showdown`
+- **Title:** Structural Showdown 2026
+- **Subtitle / Type:** Truss & Load Testing Engineering Challenge
+- **Tagline:** *"Design • Build • Load • Conquer"*
+- **Theme Slogan:** *"Where Engineers Rise. Where Structures Prove Their Strength. Design it. Build it. Test it. Prove it."*
+- **Category:** Structural Engineering & Strength Testing
+- **Short Description:** Put your strength, strategy & innovation to the ultimate test under load. Build beyond limits!
+- **Full Description:** Build beyond limits. Prove your strength! CiESA – STHAPATYA presents Structural Showdown 2026 — Where Creativity Meets Engineering. Think you can Design • Build • Load • Conquer? Put your strength, strategy, and structural innovation to the ultimate test as your fabricated structures face real-time mechanical loading. Compete against the best civil engineering minds across colleges!
+- **Objective:** Design and construct an efficient, resilient truss or structural prototype using given constraints and materials, maximizing strength-to-weight load capacity.
+- **Team Size:** Minimum 2 | Maximum 3 members
+- **Duration:** 10:00 AM onwards (9th & 10th October 2026)
+- **Registration Fee:**
+  - **PCCOE Students:** FREE
+  - **Students from other colleges:** ₹100 per team
+- **Prize Pool:** ₹5,000 🏆
+- **Date & Time:** 9th & 10th October 2026 | 10:00 AM onwards
+- **Last Date to Register:** 8th October 2026
+- **Venue:** Building No. 9, PCCOE
+- **Rules & Regulations:**
+  1. Teams must consist of 2 to 3 members.
+  2. Structures must be fabricated strictly using the official materials provided at the venue.
+  3. Designs must conform to given dimensional tolerances, span lengths, and clearance criteria.
+  4. Testing involves progressive load application until structural failure or maximum allowable deflection.
+  5. Scoring is based on Strength-to-Weight ratio (Load capacity / Self-weight) and engineering efficiency.
+  6. Decision of the judges and CiESA organizing committee is final.
+- **Materials & Testing:**
+  - Truss fabrication materials, joinery, and adhesives provided at the venue.
+  - Mechanical testing rig, weights, and deflection dial gauges set up in the testing lab.
+- **Important Notes:**
+  - 🚨 LIMITED SLOTS — Early registration recommended!
+  - Free for PCCOE students (College PRN/ID required).
+  - Registration deadline: 8th October 2026.
+- **Registration Form:** [Google Form Registration Link](https://docs.google.com/forms/d/e/1FAIpQLSekcsZKyOGRiYfP1BcFNWfMAd8jwJZlOHJTFPY7golrlzIJgA/viewform?usp=publish-editor)
+- **Coordinators:** CiESA Civil Department Desk, PCCOE
+
+---
+
+## 5. 🧭 BEYOND THE BENCHMARK — Advanced Surveying & Field Challenge
+- **Slug:** `beyond-the-benchmark`
+- **Title:** Beyond The Benchmark
+- **Subtitle / Type:** 3-Round Surveying Knowledge & Field Equipment Challenge
+- **Tagline:** *"Precision • Calculation • Field Mastery"*
+- **Theme Slogan:** *"Benchmark Your Surveying Skills from Theory to Field Instruments."*
+- **Category:** Surveying & Geomatics Engineering
+- **Mode:** Offline
+- **Team Size:** Group of 3 students
+- **Registration & Eligibility:**
+  - Open to all engineering students.
+  - PCET college students must compulsory register using their official college email only (FREE).
+  - Students from other institutes must pay an entry fee of ₹50/- and provide payment receipt.
+  - Registration fees are non-refundable.
+- **Prize Pool:** 
+  - 🥇 1st Rank: ₹3,000/-
+  - 🥈 2nd Rank: ₹2,000/-
+  - Total Pool: ₹5,000 🏆
+- **Date & Time:** 9th & 10th October 2026 | 10:00 AM onwards
+- **Last Date to Register:** 8th October 2026
+- **Venue:** Building No. 9 / Surveying Ground & Lab, PCCOE
+- **Event Format (3 Rounds — Total 50 Marks):**
+  - **Round 1 – Technical Questions (MCQ) [20 Marks]:** Objective questions based on basic and advanced surveying concepts, instruments, methods, errors, and field procedures.
+  - **Round 2 – Surveying Numericals [10 Marks]:** Numerical problem solving based on levelling, bearings, traversing, area computations, and corrections.
+  - **Round 3 – Field Equipment Challenge [20 Marks]:** Rapid identification, setup, and instrument handling (theodolites, levels) under judge/coordinator supervision.
+- **Event Flow:**
+  1. Reporting & verification of registration and identity cards.
+  2. Briefing and explanation of round rules.
+  3. Round 1 – Technical Surveying MCQ & elimination of low-scoring teams.
+  4. Round 2 – Surveying Numerical Challenge & evaluation.
+  5. Round 3 – Field Equipment Challenge with surveying instruments.
+  6. Score compilation, winner announcement, and prize distribution.
+- **Judging & Evaluation:**
+  - Round 1: Accuracy of answers.
+  - Round 2: Correct formulas, steps, units, and final values.
+  - Round 3: Instrument identification, setup, handling, observation, and completion within time.
+  - Tie-breaker task conducted if scores match.
+- **Student Coordinators:**
+  - **Vedika Shinde:** [+91 7038867783](tel:+917038867783)
+  - **Yuvraj Chilwant:** [+91 9823045565](tel:+919823045565)
+- **Registration Link:** [Google Form Registration Link](https://docs.google.com/forms/d/e/1FAIpQLSfTAdxcEEEal1o-gtVTPu-NuX7fgKO_-EJlGb938rf9UTFKEQ/viewform?usp=publish-editor)
+
+
 

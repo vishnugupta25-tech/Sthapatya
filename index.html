@@ -7,6 +7,8 @@
   <meta name="description" content="STHAPATYA 2026–27, the flagship Civil Engineering technical fest by CiESA at PCCOE Pune. Site Investigation, 3D Showdown, CADNOVA — register now!" />
   <meta name="theme-color" content="#08090c" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ParticleText.css" />
+  <link rel="stylesheet" href="AccordionGallery.css" />
 </head>
 <body>
 
@@ -25,7 +27,12 @@
     <div class="splash-corner br"></div>
 
     <div class="splash-dept">Department of Civil Engineering</div>
-    <h1 class="splash-title">STHAPATYA</h1>
+    <div class="splash-particle-container">
+      <div class="particle-text" id="intro-particle-text" aria-label="STHAPATYA">
+        <canvas class="particle-text__canvas" aria-hidden="true"></canvas>
+        <span class="particle-text__sr">STHAPATYA</span>
+      </div>
+    </div>
     <div class="splash-year">2 0 2 6 – 2 7</div>
     <p class="splash-tagline">Flagship Technical Symposium · CiESA – PCCOE, Pune</p>
 
@@ -65,6 +72,21 @@
       </svg>
     </div>
 
+    <!-- ─── CAD BLUEPRINT STRIP ─── -->
+    <div class="cad-strip" id="cad-strip">
+      <div class="cad-strip-left">
+        <span class="cad-badge">CIVIL CAD SPEC</span>
+        <span>DWG: PCCOE/CE-2026</span>
+        <span>COORD: 18°37'08" N, 73°45'41" E</span>
+        <span>DATUM: BM +562.40m MSL</span>
+      </div>
+      <div class="cad-strip-right">
+        <span>PROJECT: STHAPATYA 2026-27</span>
+        <span>DEPT: CIVIL ENGINEERING, PCCOE</span>
+        <span>STATUS: ● FIELD APPROVED</span>
+      </div>
+    </div>
+
     <!-- ─── NAVBAR ─── -->
     <nav class="nav" id="nav">
       <div class="nav-left">
@@ -90,7 +112,7 @@
       <div class="hero-text">
         <div class="hero-tag">
           <span class="dot"></span>
-          Registrations Open · Oct 2026
+          Dept. of Civil Engineering · CiESA PCCOE
         </div>
 
         <h1>
@@ -101,7 +123,7 @@
         <p class="hero-sub">
           The flagship technical symposium organized by the Civil Engineering
           Students Association. Compete, build, investigate, and innovate
-          across three high-octane challenges at PCCOE.
+          across five high-octane challenges at PCCOE.
         </p>
 
         <div class="hero-meta">
@@ -115,7 +137,7 @@
           </div>
           <div class="hero-meta-block">
             <span class="label">Prize Pool</span>
-            <span class="value">₹15,000+</span>
+            <span class="value">₹25,000+</span>
           </div>
         </div>
 
@@ -130,35 +152,47 @@
           <!-- CSS I-beam + SVG truss triangle -->
           <svg class="truss-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
             <!-- Truss triangle frame -->
-            <polygon points="200,40 50,350 350,350" stroke="#e8a020" stroke-width="1.5" fill="none" opacity="0.3" />
-            <line x1="200" y1="40" x2="200" y2="350" stroke="#e8a020" stroke-width="0.8" opacity="0.2" />
-            <line x1="125" y1="195" x2="275" y2="195" stroke="#e8a020" stroke-width="0.8" opacity="0.2" />
+            <polygon points="200,40 50,350 350,350" stroke="#e8a020" stroke-width="1.8" fill="none" opacity="0.35" />
+            <line x1="200" y1="40" x2="200" y2="350" stroke="#e8a020" stroke-width="1" opacity="0.25" />
+            <line x1="125" y1="195" x2="275" y2="195" stroke="#e8a020" stroke-width="1" opacity="0.25" />
             <!-- Diagonal members -->
-            <line x1="125" y1="195" x2="200" y2="40" stroke="#4ecdc4" stroke-width="0.6" opacity="0.15" />
-            <line x1="275" y1="195" x2="200" y2="40" stroke="#4ecdc4" stroke-width="0.6" opacity="0.15" />
-            <line x1="125" y1="195" x2="200" y2="350" stroke="#4ecdc4" stroke-width="0.6" opacity="0.15" />
-            <line x1="275" y1="195" x2="200" y2="350" stroke="#4ecdc4" stroke-width="0.6" opacity="0.15" />
-            <!-- Nodes -->
-            <circle cx="200" cy="40" r="5" fill="#e8a020" opacity="0.5" />
-            <circle cx="50" cy="350" r="5" fill="#e8a020" opacity="0.5" />
-            <circle cx="350" cy="350" r="5" fill="#e8a020" opacity="0.5" />
-            <circle cx="125" cy="195" r="4" fill="#4ecdc4" opacity="0.35" />
-            <circle cx="275" cy="195" r="4" fill="#4ecdc4" opacity="0.35" />
-            <circle cx="200" cy="195" r="3" fill="#4ecdc4" opacity="0.25" />
-            <circle cx="200" cy="350" r="4" fill="#e8a020" opacity="0.35" />
+            <line x1="125" y1="195" x2="200" y2="40" stroke="#4ecdc4" stroke-width="0.8" opacity="0.25" />
+            <line x1="275" y1="195" x2="200" y2="40" stroke="#4ecdc4" stroke-width="0.8" opacity="0.25" />
+            <line x1="125" y1="195" x2="200" y2="350" stroke="#4ecdc4" stroke-width="0.8" opacity="0.25" />
+            <line x1="275" y1="195" x2="200" y2="350" stroke="#4ecdc4" stroke-width="0.8" opacity="0.25" />
+            <!-- Nodes with Labels -->
+            <circle cx="200" cy="40" r="5" fill="#e8a020" opacity="0.6" />
+            <text x="210" y="42" fill="#e8a020" font-size="7" font-family="Space Mono" opacity="0.6">NODE 1 [APEX]</text>
+            <circle cx="50" cy="350" r="5" fill="#e8a020" opacity="0.6" />
+            <text x="58" y="365" fill="#e8a020" font-size="7" font-family="Space Mono" opacity="0.6">HINGE ▲</text>
+            <circle cx="350" cy="350" r="5" fill="#e8a020" opacity="0.6" />
+            <text x="310" y="365" fill="#e8a020" font-size="7" font-family="Space Mono" opacity="0.6">ROLLER ◯</text>
+            <circle cx="125" cy="195" r="4" fill="#4ecdc4" opacity="0.4" />
+            <circle cx="275" cy="195" r="4" fill="#4ecdc4" opacity="0.4" />
+            <circle cx="200" cy="195" r="3" fill="#4ecdc4" opacity="0.3" />
+            <circle cx="200" cy="350" r="4" fill="#e8a020" opacity="0.4" />
+            <!-- Load Vector at Apex -->
+            <line x1="200" y1="8" x2="200" y2="36" stroke="#f59e0b" stroke-width="2" />
+            <polygon points="196,30 200,38 204,30" fill="#f59e0b" />
+            <text x="206" y="22" fill="#f59e0b" font-size="8" font-family="Space Mono" font-weight="bold">P = 60 kN ↓</text>
+            <!-- Member Stress Annotations -->
+            <text x="80" y="150" fill="#4ecdc4" font-size="6" font-family="Space Mono" opacity="0.5" transform="rotate(-62,80,150)">COMPRESSION [-]</text>
+            <text x="290" y="130" fill="#4ecdc4" font-size="6" font-family="Space Mono" opacity="0.5" transform="rotate(62,290,130)">COMPRESSION [-]</text>
+            <text x="175" y="340" fill="#e8a020" font-size="6" font-family="Space Mono" opacity="0.5">TENSION [+]</text>
             <!-- I-beam cross-section at center -->
-            <rect x="165" y="160" width="70" height="8" rx="1" fill="#e8a020" opacity="0.25" />
-            <rect x="165" y="225" width="70" height="8" rx="1" fill="#e8a020" opacity="0.25" />
-            <rect x="195" y="168" width="10" height="57" rx="1" fill="#e8a020" opacity="0.2" />
+            <rect x="165" y="160" width="70" height="8" rx="1" fill="#e8a020" opacity="0.3" />
+            <rect x="165" y="225" width="70" height="8" rx="1" fill="#e8a020" opacity="0.3" />
+            <rect x="195" y="168" width="10" height="57" rx="1" fill="#e8a020" opacity="0.25" />
             <!-- Dimension lines -->
-            <line x1="30" y1="40" x2="30" y2="350" stroke="#8892a0" stroke-width="0.5" opacity="0.15" />
-            <line x1="26" y1="40" x2="34" y2="40" stroke="#8892a0" stroke-width="0.5" opacity="0.15" />
-            <line x1="26" y1="350" x2="34" y2="350" stroke="#8892a0" stroke-width="0.5" opacity="0.15" />
-            <text x="16" y="198" fill="#8892a0" font-size="8" opacity="0.2" transform="rotate(-90,16,198)" font-family="Space Mono">310mm</text>
+            <line x1="30" y1="40" x2="30" y2="350" stroke="#8892a0" stroke-width="0.6" opacity="0.25" />
+            <line x1="24" y1="40" x2="36" y2="40" stroke="#8892a0" stroke-width="0.6" opacity="0.25" />
+            <line x1="24" y1="350" x2="36" y2="350" stroke="#8892a0" stroke-width="0.6" opacity="0.25" />
+            <text x="14" y="198" fill="#8892a0" font-size="8" opacity="0.3" transform="rotate(-90,14,198)" font-family="Space Mono">SPAN 4500mm</text>
             <!-- Title block reference -->
-            <rect x="280" y="365" width="110" height="30" rx="2" stroke="#8892a0" stroke-width="0.5" fill="none" opacity="0.1" />
-            <text x="290" y="380" fill="#8892a0" font-size="6" opacity="0.15" font-family="Space Mono">STHAPATYA / CiESA</text>
-            <text x="290" y="390" fill="#8892a0" font-size="5" opacity="0.12" font-family="Space Mono">DWG NO: CE-2026-01</text>
+            <rect x="250" y="360" width="145" height="35" rx="2" stroke="#8892a0" stroke-width="0.6" fill="#0c0e14" opacity="0.7" />
+            <text x="258" y="373" fill="#e8a020" font-size="6" opacity="0.8" font-family="Space Mono">CIESA STRUCTURAL LAB</text>
+            <text x="258" y="383" fill="#8892a0" font-size="5" opacity="0.6" font-family="Space Mono">IS 800:2007 TRUSS REF</text>
+            <text x="258" y="391" fill="#4ecdc4" font-size="5" opacity="0.6" font-family="Space Mono">SCALE 1:25 · ELEV +562.4m</text>
           </svg>
 
           <!-- Countdown anchored below -->
@@ -190,11 +224,46 @@
       </div>
     </section>
 
+    <!-- ─── IS CODES CIVIL ENGINEERING MARQUEE ─── -->
+    <div class="civil-marquee" aria-label="Indian Standards & Civil Engineering Codes of Practice">
+      <div class="civil-marquee-track">
+        <span class="marquee-item"><span class="marquee-tag">IS 456:2000</span> Plain & Reinforced Concrete Code of Practice</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 800:2007</span> General Construction in Steel (Limit State Design)</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">NBC 2016</span> National Building Code of India (Planning & Bye-Laws)</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 1893:2016</span> Criteria for Earthquake Resistant Design of Structures</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 1200</span> Method of Measurement of Building & Civil Works</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 383:2016</span> Coarse and Fine Aggregate for Concrete</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">SP 34</span> Handbook on Concrete Reinforcement and Detailing</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IRC:SP:84</span> Manual of Specifications for Highway Engineering</span>
+        <span class="marquee-dot">◆</span>
+        <!-- Repeating track for infinite seamless scroll -->
+        <span class="marquee-item"><span class="marquee-tag">IS 456:2000</span> Plain & Reinforced Concrete Code of Practice</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 800:2007</span> General Construction in Steel (Limit State Design)</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">NBC 2016</span> National Building Code of India (Planning & Bye-Laws)</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 1893:2016</span> Criteria for Earthquake Resistant Design of Structures</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 1200</span> Method of Measurement of Building & Civil Works</span>
+        <span class="marquee-dot">◆</span>
+        <span class="marquee-item"><span class="marquee-tag">IS 383:2016</span> Coarse and Fine Aggregate for Concrete</span>
+        <span class="marquee-dot">◆</span>
+      </div>
+    </div>
+
     <!-- ─── ABOUT ─── -->
     <section id="about">
       <div class="container">
         <div class="sec-head reveal">
-          <div class="sec-eyebrow">About the Fest</div>
+          <div class="sec-eyebrow">Department Overview</div>
           <h2 class="sec-title">What is Sthapatya?</h2>
         </div>
         <div class="about-layout">
@@ -202,38 +271,60 @@
             <p>
               <strong>STHAPATYA</strong> is the flagship annual technical symposium organized by the
               <strong>Civil Engineering Students Association (CiESA)</strong> at
-              <strong>PCCOE, Pune</strong>.
+              <strong>Pimpri Chinchwad College of Engineering (PCCOE), Pune</strong>.
             </p>
             <p>
-              It brings together engineering students from across colleges
-              to showcase technical knowledge, creativity, problem-solving,
-              and practical engineering abilities through hands-on competitions —
-              from campus-wide treasure hunts to professional AutoCAD drafting
-              battles and 3D printing showdowns.
+              It brings together future civil engineers, innovators, and structural designers from across colleges
+              to showcase technical knowledge, surveying accuracy, architectural drafting precision,
+              and structural engineering capabilities through hands-on competitions.
             </p>
             <p>
-              Whether you're mapping survey grids, decoding investigation clues,
-              or designing NBC-compliant floor plans — Sthapatya is where
+              Whether you're calculating theodolite traverses, decoding forensic site clues,
+              or drafting NBC-compliant building elevations — Sthapatya is where
               blueprints come alive and concrete meets code.
             </p>
           </div>
           <div class="stats-strip reveal reveal-d2">
             <div class="stat-block">
-              <div class="num">3+</div>
-              <div class="lbl">Events</div>
+              <div class="num">5</div>
+              <div class="lbl">Civil Events</div>
             </div>
             <div class="stat-block">
-              <div class="num">₹15K+</div>
+              <div class="num">₹25K+</div>
               <div class="lbl">Prize Pool</div>
             </div>
             <div class="stat-block">
               <div class="num">2</div>
-              <div class="lbl">Days</div>
+              <div class="lbl">Symposium Days</div>
             </div>
             <div class="stat-block">
               <div class="num">PCCOE</div>
-              <div class="lbl">Nigdi, Pune</div>
+              <div class="lbl">Bldg No. 9, Pune</div>
             </div>
+          </div>
+        </div>
+
+        <!-- 4 Core Pillars of Civil Engineering -->
+        <div class="civil-domains reveal">
+          <div class="domain-card">
+            <div class="domain-code">DISCIPLINE 01 // STRUCTURAL</div>
+            <div class="domain-title">🏗️ Mechanics & Materials</div>
+            <div class="domain-desc">Truss equilibrium, deflection curves, load-bearing capacities, and limit state behavior under progressive mechanical stress.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-code">DISCIPLINE 02 // DRAFTING & BIM</div>
+            <div class="domain-title">📐 CAD & NBC Planning</div>
+            <div class="domain-desc">AutoCAD drafting, building services (MEP), municipal bye-laws scrutiny, FSI calculations, and ISO/IS colour standards.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-code">DISCIPLINE 03 // GEOMATICS</div>
+            <div class="domain-title">🧭 Surveying & Geodesy</div>
+            <div class="domain-desc">Benchmarking, fly levelling, theodolite traverse computations, total station precision sighting, and ground contour mapping.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-code">DISCIPLINE 04 // PROTOTYPING</div>
+            <div class="domain-title">🖨️ Additive Civil Tech</div>
+            <div class="domain-desc">Computational 3D modeling, slicing optimization, and physical prototype fabrication bridging digital design to tangible civil scale models.</div>
           </div>
         </div>
       </div>
@@ -246,6 +337,10 @@
           <div class="sec-eyebrow">Flagship Competitions</div>
           <h2 class="sec-title">Explore Our Events</h2>
         </div>
+
+        <!-- 3D Accordion Gallery from React Bits -->
+        <div class="reveal" id="events-accordion-gallery"></div>
+
         <div class="events-grid" id="events-grid">
           <!-- JS rendered -->
         </div>
@@ -254,18 +349,49 @@
 
     <!-- ─── FOOTER ─── -->
     <footer class="footer" id="contact">
-      <div class="footer-left">
-        <div class="footer-mark">STHAPAT<em>Y</em>A</div>
-        <div class="footer-sub">Pimpri Chinchwad College of Engineering, Pune</div>
-        <div class="footer-dept">Department of Civil Engineering · CiESA 2026-27</div>
+      <!-- Civil Engineering Drawing Title Block -->
+      <div class="blueprint-title-block">
+        <div class="btb-col">
+          <div class="btb-lbl">INSTITUTION / DEPARTMENT</div>
+          <div class="btb-val">DEPARTMENT OF CIVIL ENGINEERING</div>
+          <div class="btb-sub">Pimpri Chinchwad College of Engineering (PCCOE), Pune</div>
+        </div>
+        <div class="btb-col">
+          <div class="btb-lbl">SYMPOSIUM</div>
+          <div class="btb-val highlight">STHAPATYA 2026–27</div>
+          <div class="btb-sub">Flagship National Technical Fest</div>
+        </div>
+        <div class="btb-col">
+          <div class="btb-lbl">ORGANIZING BODY</div>
+          <div class="btb-val">CiESA</div>
+          <div class="btb-sub">Civil Eng. Students Association</div>
+        </div>
+        <div class="btb-col">
+          <div class="btb-lbl">SPECIFICATION CODES</div>
+          <div class="btb-val">IS 456 · IS 800 · NBC</div>
+          <div class="btb-sub">DWG REF: PCCOE/CE-2026-FINAL</div>
+        </div>
+        <div class="btb-col">
+          <div class="btb-lbl">FIELD STATUS</div>
+          <div class="btb-stamp">APPROVED FOR FIELD</div>
+        </div>
       </div>
-      <div class="footer-right">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#events">Events</a>
+
+      <div class="footer-top">
+        <div class="footer-left">
+          <div class="footer-mark">STHAPAT<em>Y</em>A</div>
+          <div class="footer-sub">Pimpri Chinchwad College of Engineering, Pune</div>
+          <div class="footer-dept">Department of Civil Engineering · CiESA 2026-27</div>
+        </div>
+        <div class="footer-right">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#events">Events</a>
+          <a href="#events" class="register-link">Register</a>
+        </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 CiESA – STHAPATYA. Civil Engineering Dept, PCCOE.</p>
+        <p>&copy; 2026 CiESA – STHAPATYA. Department of Civil Engineering, PCCOE. Built with Structural Precision.</p>
       </div>
     </footer>
 
@@ -276,6 +402,9 @@
     <div class="modal-panel" id="modal-panel"></div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="ParticleText.js"></script>
+  <script src="AccordionGallery.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

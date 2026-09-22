@@ -137,6 +137,103 @@ const EVENTS = [
       { name: "Shruti S Pagaree", phone: "+91 8421711369", tel: "tel:+918421711369" }
     ],
     formLink: "https://forms.gle/13BrzGNz1vbY3D3o8"
+  },
+  {
+    id: "structural-showdown",
+    icon: "🏗️",
+    title: "STRUCTURAL SHOWDOWN 2026",
+    subtitle: "Where Creativity Meets Engineering!",
+    tagline: "Design • Build • Load • Conquer",
+    theme: "Where Engineers Rise. Where Structures Prove Their Strength.",
+    category: "Structural Design",
+    catColor: "#f59e0b",
+    accent: "linear-gradient(135deg, #f59e0b, #d97706)",
+    iconBg: "rgba(245,158,11,0.1)",
+    shortDesc: "Design it. Build it. Test it. Prove it. Put your strength, strategy & innovation to the ultimate test under load!",
+    fullDesc: "Build beyond limits. Prove your strength! CiESA – STHAPATYA presents Structural Showdown 2026 — Where Creativity Meets Engineering. Think you can Design • Build • Load • Conquer? Put your strength, strategy, and structural innovation to the ultimate test as your fabricated structures face real-time mechanical loading. Compete against the best civil engineering minds across colleges!",
+    objective: "Design and construct an efficient, resilient truss or structural prototype using given constraints and materials, maximizing strength-to-weight load capacity.",
+    teamSize: "2 – 3",
+    duration: "10 AM onwards",
+    feePCCOE: "FREE",
+    feeOther: "₹100/team",
+    prize: "₹5,000",
+    date: "9–10 Oct 2026",
+    lastDate: "8th Oct 2026",
+    venue: "Building No. 9, PCCOE",
+    rules: [
+      "Teams must consist of 2 to 3 members.",
+      "Structures must be fabricated strictly using the official materials provided at the venue.",
+      "Designs must conform to given dimensional tolerances, span lengths, and clearance criteria.",
+      "Testing involves progressive load application until structural failure or maximum allowable deflection.",
+      "Scoring is based on Strength-to-Weight ratio (Load capacity / Self-weight) and engineering efficiency.",
+      "Decision of the judges and CiESA organizing committee is final."
+    ],
+    materials: [
+      "Truss fabrication materials, joinery, and adhesives provided at the venue.",
+      "Mechanical testing rig, weights, and deflection dial gauges set up in the testing lab."
+    ],
+    notes: [
+      "🚨 LIMITED SLOTS — REGISTER NOW!",
+      "Free for PCCOE students (College PRN/ID required).",
+      "Registration deadline: 8th October 2026."
+    ],
+    coordinators: [
+      { name: "CiESA Desk", phone: "PCCOE Civil Dept", tel: "#contact" },
+      { name: "Event Desk", phone: "Registration Desk", tel: "#contact" }
+    ],
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSekcsZKyOGRiYfP1BcFNWfMAd8jwJZlOHJTFPY7golrlzIJgA/viewform?usp=publish-editor"
+  },
+  {
+    id: "beyond-the-benchmark",
+    icon: "🧭",
+    title: "BEYOND THE BENCHMARK",
+    subtitle: "3-Round Advanced Surveying & Field Challenge",
+    tagline: "Precision • Calculation • Field Mastery",
+    theme: "Benchmark Your Surveying Skills from Theory to Field Instruments.",
+    category: "Surveying & Geomatics",
+    catColor: "#10b981",
+    accent: "linear-gradient(135deg, #10b981, #059669)",
+    iconBg: "rgba(16,185,129,0.1)",
+    shortDesc: "Test your surveying expertise across technical MCQs, levelling numericals, and live field equipment setups.",
+    fullDesc: "BEYOND THE BENCHMARK is an intensive 3-round offline surveying competition designed to test theoretical knowledge, mathematical calculations, and practical field equipment handling. From levelling, bearings, traversing, and area corrections to setting up and sighting instruments under time limits, prove your engineering precision!",
+    objective: "Excel across technical surveying theory, numerical problem-solving, and accurate hands-on field instrument handling.",
+    teamSize: "Group of 3",
+    duration: "Offline · 10 AM onwards",
+    feePCCOE: "FREE (PCET)",
+    feeOther: "₹50/-",
+    prize: "₹5,000 (1st: ₹3,000 | 2nd: ₹2,000)",
+    date: "9–10 Oct 2026",
+    lastDate: "8th Oct 2026",
+    venue: "Building No. 9 / Survey Lab, PCCOE",
+    rules: [
+      "The event is open to all students. Team size must be exactly a group of 3 students.",
+      "PCET students must compulsory register using their official college email only.",
+      "Students from non-PCET institutes must pay an entry fee of ₹50/- and provide payment receipt.",
+      "Participants must carry valid college identity cards at reporting time.",
+      "Bring required stationery (pen, pencil, notebook). Calculator use permitted only if announced by organizers.",
+      "No mobile phones or unauthorized electronic devices allowed during written rounds.",
+      "All field equipment must be handled carefully and only as instructed by coordinators.",
+      "Lowest scoring teams will be eliminated after rounds; judges' decision is final and binding."
+    ],
+    rounds: [
+      { name: "Round 1 – Technical MCQ (20 Marks)", desc: "Objective questions on basic & advanced surveying concepts, instruments, methods, errors, and field procedures." },
+      { name: "Round 2 – Surveying Numericals (10 Marks)", desc: "Numerical problems based on levelling, bearings, traversing, area computations, and corrections." },
+      { name: "Round 3 – Field Equipment Challenge (20 Marks)", desc: "Identify, set up, and operate surveying instruments under judge supervision within time limits." }
+    ],
+    materials: [
+      "Bring your own stationery (pens, pencils, notebook).",
+      "Surveying instruments (Dumpy levels, auto levels, theodolites, tripods, leveling staves) provided on field."
+    ],
+    notes: [
+      "🏆 Total Prize Pool: 1st Rank: ₹3,000/- | 2nd Rank: ₹2,000/- (Total: 50 Marks).",
+      "Registration fees once paid are non-refundable.",
+      "PCET students must register with college email."
+    ],
+    coordinators: [
+      { name: "Vedika Shinde", phone: "+91 7038867783", tel: "tel:+917038867783" },
+      { name: "Yuvraj Chilwant", phone: "+91 9823045565", tel: "tel:+919823045565" }
+    ],
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSfTAdxcEEEal1o-gtVTPu-NuX7fgKO_-EJlGb938rf9UTFKEQ/viewform?usp=publish-editor"
   }
 ];
 
@@ -149,16 +246,47 @@ window.addEventListener('DOMContentLoaded', () => {
   const splash = document.getElementById('splash');
   const site = document.getElementById('site-wrap');
 
-  setTimeout(() => {
-    splash.classList.add('done');
-    site.style.display = 'block';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => site.classList.add('show'));
+  // Initialize React Bits ParticleText on intro screen
+  const introEl = document.getElementById('intro-particle-text');
+  let particleInstance = null;
+  if (introEl && window.ParticleText) {
+    particleInstance = new window.ParticleText(introEl, {
+      text: 'STHAPATYA',
+      particleSize: 2,
+      density: 4,
+      color: '#ffffff',
+      highlightColor: '#8b5cf6',
+      scatter: 180,
+      gatherDuration: 1600,
+      stagger: 420,
+      pointerRepel: 40,
+      repelRadius: 120,
+      idleDrift: 0.7,
+      trigger: 'hover',
+      fontSize: 'clamp(3rem, 12vw, 8rem)',
+      fontWeight: 800,
+      fontFamily: 'inherit',
+      glow: true
     });
-    setTimeout(() => splash.remove(), 1000);
-  }, 3000);
+  }
+
+  // Dismiss splash after intro plays (~3.2s)
+  setTimeout(() => {
+    if (splash) {
+      splash.classList.add('done');
+      site.style.display = 'block';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => site.classList.add('show'));
+      });
+      setTimeout(() => {
+        if (particleInstance) particleInstance.destroy();
+        splash.remove();
+      }, 1000);
+    }
+  }, 3200);
 
   renderCards();
+  renderAccordionGallery();
   initReveal();
   checkHash();
 });
@@ -225,9 +353,15 @@ function renderCards() {
     el.setAttribute('role', 'button');
     el.setAttribute('tabindex', '0');
 
+    const sheetNo = `CE-DWG-0${i + 1}`;
+
     el.innerHTML = `
       <div class="card-beam" style="background:${ev.accent};"></div>
       <div class="card-inner">
+        <div class="card-dwg-header">
+          <span class="card-dwg-num">⌖ SHEET ${sheetNo}</span>
+          <span>ZONE: BLDG 9 · FIELD SCALE</span>
+        </div>
         <div class="card-icon-wrap" style="background:${ev.iconBg};">${ev.icon}</div>
         <div class="card-cat" style="color:${ev.catColor};">${ev.category}</div>
         <h3 class="card-name">${ev.title}</h3>
@@ -253,6 +387,79 @@ function renderCards() {
 
 
 // ═══════════════════════════════════════
+// RENDER ACCORDION GALLERY (React Bits)
+// ═══════════════════════════════════════
+
+function renderAccordionGallery() {
+  const container = document.getElementById('events-accordion-gallery');
+  if (!container || !window.AccordionGallery) return;
+
+  const galleryItems = [
+    {
+      id: 'the-site-investigation',
+      label: '🔎 The Site Investigation',
+      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?q=80&w=900&auto=format&fit=crop',
+      alt: 'The Site Investigation Treasure Hunt',
+      link: '#the-site-investigation'
+    },
+    {
+      id: '3d-showdown',
+      label: '🖨️ 3-D Showdown',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=900&auto=format&fit=crop',
+      alt: '3-D Showdown Model Printing Challenge',
+      link: '#3d-showdown'
+    },
+    {
+      id: 'cadnova',
+      label: '🛠️ CADNOVA 2026',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=900&auto=format&fit=crop',
+      alt: 'CADNOVA AutoCAD Drafting Challenge',
+      link: '#cadnova'
+    },
+    {
+      id: 'structural-showdown',
+      label: '🏗️ Structural Showdown',
+      image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=900&auto=format&fit=crop',
+      alt: 'Structural Showdown Truss & Load Testing',
+      link: '#structural-showdown'
+    },
+    {
+      id: 'beyond-the-benchmark',
+      label: '🧭 Beyond The Benchmark',
+      image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=900&auto=format&fit=crop',
+      alt: 'Beyond The Benchmark Surveying Challenge',
+      link: '#beyond-the-benchmark'
+    }
+  ];
+
+  new window.AccordionGallery(container, {
+    items: galleryItems,
+    defaultIndex: 2,
+    expandRatio: 0.52,
+    trigger: 'hover',
+    accentColor: '#e8a020',
+    overlayColor: '#08090c',
+    textColor: '#ffffff',
+    height: 420,
+    gap: 12,
+    radius: 16,
+    duration: 0.6,
+    ease: 'power3.out',
+    parallax: 0.5,
+    tilt: 8,
+    stagger: 0.06,
+    grayscale: true,
+    showLabels: true,
+    onSelect: item => {
+      if (item && item.id) {
+        showModal(item.id);
+      }
+    }
+  });
+}
+
+
+// ═══════════════════════════════════════
 // EVENT DETAIL MODAL
 // ═══════════════════════════════════════
 
@@ -271,6 +478,17 @@ function showModal(id) {
         <ul>
           <li><strong>Day 1:</strong> ${ev.scheduleDays.day1}</li>
           <li><strong>Day 2:</strong> ${ev.scheduleDays.day2}</li>
+        </ul>
+      </div>`;
+  }
+
+  let roundsHTML = '';
+  if (ev.rounds) {
+    roundsHTML = `
+      <div class="m-section">
+        <div class="m-sec-title">🎯 Event Format & Rounds</div>
+        <ul>
+          ${ev.rounds.map(r => `<li><strong>${r.name}:</strong> ${r.desc}</li>`).join('')}
         </ul>
       </div>`;
   }
@@ -301,6 +519,7 @@ function showModal(id) {
       <div class="m-section"><div class="m-sec-title">📌 Description</div><p>${ev.fullDesc}</p></div>
       <div class="m-section"><div class="m-sec-title">🎯 Objective</div><p>${ev.objective}</p></div>
       ${schedHTML}
+      ${roundsHTML}
       <div class="m-section"><div class="m-sec-title">📋 Rules & Regulations</div><ol>${ev.rules.map(r=>`<li>${r}</li>`).join('')}</ol></div>
       <div class="m-section"><div class="m-sec-title">🧰 Materials</div><ul>${ev.materials.map(m=>`<li>${m}</li>`).join('')}</ul></div>
       <div class="m-section"><div class="m-sec-title">⚠️ Important Notes</div><ul>${ev.notes.map(n=>`<li>${n}</li>`).join('')}</ul></div>

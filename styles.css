@@ -138,33 +138,19 @@ ul, ol { list-style: none; }
   animation: fadeUp 0.7s var(--ease) 0.3s forwards;
 }
 
-.splash-title {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 12vw, 9rem);
-  font-weight: 900;
-  letter-spacing: -3px;
-  line-height: 0.9;
-  color: var(--white);
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.5s forwards;
-  margin-top: 12px;
+.splash-particle-container {
+  width: 90vw;
+  max-width: 900px;
+  height: clamp(160px, 28vh, 280px);
   position: relative;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 0.6s var(--ease) 0.4s forwards;
 }
-
-/* Underline beam under title */
-.splash-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 3px;
-  background: var(--amber);
-  animation: lineGrow 0.6s var(--ease) 1s forwards;
-}
-
-@keyframes lineGrow { to { width: 60%; } }
 
 .splash-year {
   font-family: var(--font-mono);
@@ -218,45 +204,95 @@ ul, ol { list-style: none; }
   opacity: 1;
 }
 
-/* Blueprint grid — subtle */
+/* Blueprint grid — authentic engineering drafting paper */
 .bg-grid {
   position: fixed;
   inset: 0;
   z-index: -2;
-  opacity: 0.35;
+  opacity: 0.45;
   background-image:
-    linear-gradient(rgba(42, 95, 143, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42, 95, 143, 0.06) 1px, transparent 1px);
-  background-size: 100px 100px;
+    /* Minor 20mm drafting subdivisions */
+    linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+    /* Major 100mm grid lines */
+    linear-gradient(rgba(42, 95, 143, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 95, 143, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
 }
 
-/* Diagonal truss pattern — unique civil element */
+/* Diagonal truss pattern — civil structural framing */
 .bg-truss {
   position: fixed;
   top: 0;
-  right: -200px;
-  width: 600px;
+  right: -180px;
+  width: 650px;
   height: 100vh;
   z-index: -1;
-  opacity: 0.025;
+  opacity: 0.035;
   pointer-events: none;
 }
 
 .bg-truss svg { width: 100%; height: 100%; }
 
 /* ═══════════════════════════════════════
+   CAD DRAFTING TOP STRIP (Civil Blueprint)
+   ═══════════════════════════════════════ */
+.cad-strip {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  background: #040507;
+  border-bottom: 1px solid rgba(232, 160, 32, 0.25);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--steel);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  z-index: 910;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cad-strip-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cad-strip-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--amber);
+}
+
+.cad-badge {
+  background: rgba(232, 160, 32, 0.12);
+  border: 1px solid rgba(232, 160, 32, 0.35);
+  padding: 1px 7px;
+  border-radius: 2px;
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 0.58rem;
+}
+
+/* ═══════════════════════════════════════
    NAVBAR
    ═══════════════════════════════════════ */
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 28px; left: 0; right: 0;
   z-index: 900;
   padding: 0 48px;
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(8, 9, 12, 0.5);
+  background: rgba(8, 9, 12, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -264,7 +300,7 @@ ul, ol { list-style: none; }
 }
 
 .nav.scrolled {
-  background: rgba(8, 9, 12, 0.92);
+  background: rgba(8, 9, 12, 0.95);
 }
 
 .nav-left {
@@ -666,6 +702,115 @@ section { padding: 100px 48px; }
   line-height: 1.1;
 }
 
+/* IS Codes Civil Engineering Marquee */
+.civil-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #090b10;
+  border-top: 1px solid rgba(232, 160, 32, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 11px 0;
+  position: relative;
+  margin: 0;
+}
+
+.civil-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+  gap: 36px;
+}
+
+.civil-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--concrete);
+  letter-spacing: 0.6px;
+}
+
+.marquee-tag {
+  color: var(--amber);
+  font-weight: 700;
+  background: rgba(232, 160, 32, 0.1);
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(232, 160, 32, 0.25);
+}
+
+.marquee-dot {
+  color: var(--cyan);
+  font-size: 0.75rem;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Civil Engineering Core Disciplines */
+.civil-domains {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.domain-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px 20px;
+  position: relative;
+  transition: transform 0.25s var(--ease), border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.domain-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 160, 32, 0.4);
+}
+
+.domain-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 32px; height: 3px;
+  background: var(--amber);
+}
+
+.domain-code {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--amber);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.domain-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.domain-desc {
+  font-size: 0.82rem;
+  color: var(--gray-1);
+  line-height: 1.6;
+}
+
 /* ═══════════════════════════════════════
    ABOUT
    ═══════════════════════════════════════ */
@@ -743,6 +888,44 @@ section { padding: 100px 48px; }
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Technical drawing sheet corner ticks */
+.ev-card::before, .ev-card::after {
+  content: '⌖';
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(232, 160, 32, 0.4);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ev-card::before { top: 8px; left: 10px; }
+.ev-card::after { bottom: 8px; right: 10px; }
+
+/* Drawing sheet header on event cards */
+.card-dwg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--steel);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.card-dwg-num {
+  color: var(--amber);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .ev-card:hover {
@@ -1202,10 +1385,80 @@ section { padding: 100px 48px; }
   padding: 48px 48px 24px;
   border-top: 1px solid var(--border);
   display: flex;
+  flex-direction: column;
+}
+
+/* Civil Blueprint Drawing Title Block (Footer) */
+.blueprint-title-block {
+  width: 100%;
+  border: 2px solid rgba(232, 160, 32, 0.35);
+  background: #07090e;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr 1fr 1.2fr 1fr;
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+
+.btb-col {
+  padding: 12px 16px;
+  border-right: 1px solid rgba(232, 160, 32, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btb-col:last-child {
+  border-right: none;
+}
+
+.btb-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--gray-3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.btb-val {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.btb-val.highlight {
+  color: var(--amber);
+}
+
+.btb-sub {
+  font-size: 0.62rem;
+  color: var(--gray-2);
+  margin-top: 2px;
+}
+
+.btb-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px dashed #10b981;
+  padding: 4px 8px;
+  border-radius: 3px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.footer-top {
+  width: 100%;
+  display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 30px;
 }
 
 .footer-left {}
