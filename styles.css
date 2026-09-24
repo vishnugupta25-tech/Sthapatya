@@ -204,35 +204,124 @@ ul, ol { list-style: none; }
   opacity: 1;
 }
 
-/* Blueprint grid — authentic engineering drafting paper */
-.bg-grid {
+/* ═══════════════════════════════════════
+   DYNAMIC AMBIENT CIVIL BACKGROUND SYSTEM
+   ═══════════════════════════════════════ */
+.bg-scene {
   position: fixed;
   inset: 0;
-  z-index: -2;
-  opacity: 0.45;
-  background-image:
-    /* Minor 20mm drafting subdivisions */
-    linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px),
-    /* Major 100mm grid lines */
-    linear-gradient(rgba(42, 95, 143, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42, 95, 143, 0.12) 1px, transparent 1px);
-  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--bg-deep);
 }
 
-/* Diagonal truss pattern — civil structural framing */
-.bg-truss {
-  position: fixed;
-  top: 0;
-  right: -180px;
+/* 1. Deep Atmospheric Aurora Glow Orbs */
+.bg-aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.aurora-amber {
+  top: -12%;
+  right: -8%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(232, 160, 32, 0.3) 0%, rgba(212, 145, 42, 0.12) 45%, transparent 70%);
+  animation: auroraDrift1 20s ease-in-out infinite alternate;
+}
+
+.aurora-cyan {
+  top: 30%;
+  left: -12%;
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(42, 95, 143, 0.1) 50%, transparent 70%);
+  animation: auroraDrift2 25s ease-in-out infinite alternate;
+}
+
+.aurora-emerald {
+  bottom: -15%;
+  right: 12%;
   width: 650px;
-  height: 100vh;
-  z-index: -1;
-  opacity: 0.035;
+  height: 650px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.08) 45%, transparent 70%);
+  animation: auroraDrift3 22s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate(-70px, 60px) scale(1.12); opacity: 0.7; }
+  100% { transform: translate(-110px, 20px) scale(0.95); opacity: 0.5; }
+}
+
+@keyframes auroraDrift2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+  50% { transform: translate(80px, -50px) scale(1.15); opacity: 0.65; }
+  100% { transform: translate(50px, 70px) scale(1); opacity: 0.45; }
+}
+
+@keyframes auroraDrift3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(-60px, -70px) scale(1.2); opacity: 0.6; }
+  100% { transform: translate(40px, -30px) scale(1); opacity: 0.4; }
+}
+
+/* 2. Precision CAD Drafting Grid with Crosshairs */
+.bg-cad-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background-image:
+    /* Minor 20px drafting subdivisions */
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    /* Major 100px blueprint grids */
+    linear-gradient(rgba(232, 160, 32, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 160, 32, 0.09) 1px, transparent 1px),
+    /* Crosshairs '+' pattern at 100px intersections */
+    radial-gradient(circle, rgba(232, 160, 32, 0.35) 1.5px, transparent 1.5px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px, 100px 100px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 50px 50px;
+}
+
+/* 3. Luminous Horizontal Radar / LIDAR Sweep Line */
+.bg-radar-sweep {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(232, 160, 32, 0.15) 15%, rgba(56, 189, 248, 0.75) 50%, rgba(232, 160, 32, 0.15) 85%, transparent 100%);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6), 0 0 32px rgba(232, 160, 32, 0.35);
+  opacity: 0.65;
+  animation: radarSweep 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarSweep {
+  0% { top: -5%; opacity: 0; }
+  10% { opacity: 0.85; }
+  90% { opacity: 0.85; }
+  100% { top: 105%; opacity: 0; }
+}
+
+/* 4. Canvas for interactive space-truss & surveying nodes */
+.bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 5. Edge vignette for maximum contrast & crisp readability */
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, transparent 35%, rgba(8, 9, 12, 0.7) 80%, rgba(8, 9, 12, 0.95) 100%);
   pointer-events: none;
 }
-
-.bg-truss svg { width: 100%; height: 100%; }
 
 /* ═══════════════════════════════════════
    CAD DRAFTING TOP STRIP (Civil Blueprint)
@@ -499,24 +588,111 @@ ul, ol { list-style: none; }
   flex-wrap: wrap;
 }
 
+/* Live Registration Alert Pill */
+.hero-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 8px 14px;
+  background: rgba(232, 160, 32, 0.12);
+  border: 1px solid rgba(232, 160, 32, 0.4);
+  border-radius: 999px;
+  margin-bottom: 22px;
+  box-shadow: 0 0 25px rgba(232, 160, 32, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  width: fit-content;
+}
+
+.hero-live-badge:hover {
+  background: rgba(232, 160, 32, 0.22);
+  border-color: var(--amber);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(232, 160, 32, 0.35);
+}
+
+.live-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  position: relative;
+}
+
+.live-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid #22c55e;
+  animation: pulseRing 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.live-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.live-arrow {
+  color: var(--amber);
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+.hero-live-badge:hover .live-arrow {
+  transform: translateX(4px);
+}
+
 .btn-fill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 32px;
-  background: var(--amber);
-  color: #0e1016;
+  gap: 10px;
+  padding: 15px 36px;
+  background: linear-gradient(135deg, #e8a020 0%, #f59e0b 50%, #d97706 100%);
+  color: #08090c;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 800;
+  font-size: 0.88rem;
   letter-spacing: 0.5px;
-  border-radius: 6px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(232, 160, 32, 0.4), 0 0 20px rgba(232, 160, 32, 0.2);
   transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
 }
 
+.btn-fill::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: rotate(25deg) translateX(-150%);
+  animation: btnShine 4s ease-in-out infinite;
+}
+
+@keyframes btnShine {
+  0%, 65% { transform: rotate(25deg) translateX(-150%); }
+  85%, 100% { transform: rotate(25deg) translateX(150%); }
+}
+
 .btn-fill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px var(--amber-glow);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(232, 160, 32, 0.6), 0 0 30px rgba(232, 160, 32, 0.35);
 }
 
 .btn-outline {
@@ -524,13 +700,14 @@ ul, ol { list-style: none; }
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.02);
   color: var(--gray-1);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.85rem;
-  border-radius: 6px;
-  border: 1px solid var(--gray-4);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
   transition: all 0.25s ease;
 }
 
@@ -538,6 +715,73 @@ ul, ol { list-style: none; }
   border-color: var(--cyan);
   color: var(--cyan);
   background: var(--cyan-glow);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Floating Sticky Register Banner (Bottom Right) */
+.floating-reg-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 850;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(14, 16, 22, 0.88);
+  border: 1px solid rgba(232, 160, 32, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(232, 160, 32, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s var(--ease);
+}
+
+.floating-reg-bar:hover {
+  border-color: var(--amber);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 35px rgba(232, 160, 32, 0.4);
+}
+
+.fl-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  flex-shrink: 0;
+  animation: pulseRing 1.8s infinite;
+}
+
+.fl-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.fl-btn {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: var(--amber);
+  color: #08090c;
+  padding: 5px 12px;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+@media (max-width: 640px) {
+  .floating-reg-bar {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    justify-content: space-between;
+  }
 }
 
 /* Hero visual — CSS structural element */
@@ -880,9 +1124,11 @@ section { padding: 100px 48px; }
 }
 
 .ev-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: rgba(24, 27, 37, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
   padding: 0;
   position: relative;
   overflow: hidden;
@@ -929,8 +1175,9 @@ section { padding: 100px 48px; }
 }
 
 .ev-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px -15px rgba(0,0,0,0.5);
+  transform: translateY(-8px);
+  border-color: rgba(232, 160, 32, 0.45);
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(232, 160, 32, 0.18);
 }
 
 /* Top accent — structural beam */
@@ -1452,6 +1699,124 @@ section { padding: 100px 48px; }
   margin-top: 2px;
 }
 
+/* Footer Contacts Section */
+.footer-contacts {
+  width: 100%;
+  margin: 10px 0 36px;
+  padding: 24px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.footer-contacts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-bottom: 14px;
+}
+
+.f-contact-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.f-contact-sub {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--gray-2);
+  letter-spacing: 0.5px;
+}
+
+.footer-contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.footer-contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-raised);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px 20px;
+  transition: transform 0.25s var(--ease), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-contact-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(232, 160, 32, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.f-contact-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--amber-glow);
+  border: 1px solid rgba(232, 160, 32, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--amber);
+  flex-shrink: 0;
+}
+
+.f-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.f-contact-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.2px;
+}
+
+.f-contact-role {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.f-contact-phone {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--gray-1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.f-contact-phone:hover {
+  color: var(--amber);
+}
+
 .footer-top {
   width: 100%;
   display: flex;
@@ -1530,6 +1895,9 @@ section { padding: 100px 48px; }
 .reveal-d1 { transition-delay: 0.08s; }
 .reveal-d2 { transition-delay: 0.16s; }
 .reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.40s; }
+.reveal-d6 { transition-delay: 0.48s; }
 
 /* ═══════════════════════════════════════
    RESPONSIVE

@@ -46,7 +46,7 @@ const EVENTS = [
       { name: "Arya Bhor", phone: "+91 8624943235", tel: "tel:+918624943235" },
       { name: "Harshali Bhilkar", phone: "+91 8624807812", tel: "tel:+918624807812" }
     ],
-    formLink: null
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSfkQ4qN1KOk06yGOBNxP9TDAcIrrjIe_lqS2PPXv-RMa6uIdQ/viewform?usp=publish-editor"
   },
   {
     id: "3d-showdown",
@@ -178,8 +178,8 @@ const EVENTS = [
       "Registration deadline: 8th October 2026."
     ],
     coordinators: [
-      { name: "CiESA Desk", phone: "PCCOE Civil Dept", tel: "#contact" },
-      { name: "Event Desk", phone: "Registration Desk", tel: "#contact" }
+      { name: "Riya Gaikwad", phone: "+91 7385761731", tel: "tel:+917385761731" },
+      { name: "Shravani Wable", phone: "+91 7721845655", tel: "tel:+917721845655" }
     ],
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSekcsZKyOGRiYfP1BcFNWfMAd8jwJZlOHJTFPY7golrlzIJgA/viewform?usp=publish-editor"
   },
@@ -234,6 +234,60 @@ const EVENTS = [
       { name: "Yuvraj Chilwant", phone: "+91 9823045565", tel: "tel:+919823045565" }
     ],
     formLink: "https://docs.google.com/forms/d/e/1FAIpQLSfTAdxcEEEal1o-gtVTPu-NuX7fgKO_-EJlGb938rf9UTFKEQ/viewform?usp=publish-editor"
+  },
+  {
+    id: "ecovision",
+    icon: "🌱",
+    title: "ECOVISION 2026",
+    subtitle: "Ideas Today • A Greener Tomorrow",
+    tagline: "Innovate. Design. Build. Sustain.",
+    theme: "Showcase your innovative ideas, creativity & practical solutions for a sustainable and smarter future!",
+    category: "Sustainability & Green Tech",
+    catColor: "#22c55e",
+    accent: "linear-gradient(135deg, #22c55e, #15803d)",
+    iconBg: "rgba(34,197,94,0.12)",
+    shortDesc: "Showcase your innovative ideas, creativity & practical solutions for a sustainable and smarter future!",
+    fullDesc: "Ready to innovate, create & inspire? CiESA – STHAPATYA 2026–27 presents ECOVISION 2026 — Ideas Today • A Greener Tomorrow. Showcase your innovative ideas, creativity, and practical engineering solutions for a sustainable and smarter future! Present your vision across Sustainability (SDGs), Net Zero emissions, Green Technology, and Smart Cities to shape resilient civil and urban infrastructure.",
+    objective: "Propose actionable, sustainable, and engineering-driven solutions addressing UN Sustainable Development Goals (SDGs), Net Zero carbon targets, Green Building technologies, and Smart City development.",
+    teamSize: "Maximum 4 (UG)",
+    duration: "Reporting: 9 AM | Starts: 10 AM (Max 7-min Pitch)",
+    feePCCOE: "FREE",
+    feeOther: "₹200/team",
+    prize: "₹5,000",
+    date: "10th Oct 2026",
+    lastDate: "6th Oct 2026",
+    venue: "PCCOE Campus, Nigdi, Pune",
+    rules: [
+      "Open to all Undergraduate (UG) students from any recognized college or university.",
+      "Team Size: Maximum of 4 members per team.",
+      "Presentation Time: Maximum 7 minutes per team, strictly timed, followed by jury Q&A.",
+      "Mandatory Poster: Participants must carry their physical poster during presentation.",
+      "Core Themes: Projects must align with Sustainability (SDGs), Net Zero, Green Tech, or Smart Cities.",
+      "All team members must carry valid college Identity Cards at the time of reporting.",
+      "Decision of the evaluation jury and CiESA organizing committee will be final and binding."
+    ],
+    rounds: [
+      { name: "Reporting & Verification (9:00 AM – 10:00 AM)", desc: "Desk registration, ID verification, and presentation venue allotment." },
+      { name: "Poster & Concept Pitch (Max 7 Minutes)", desc: "Teams pitch their sustainable idea and display physical poster before the judging panel." },
+      { name: "Jury Q&A & Impact Assessment", desc: "Evaluation based on innovation, feasibility, SDG relevance, engineering merit, and clarity." }
+    ],
+    materials: [
+      "Teams must carry their physical poster during the presentation.",
+      "Presentation room, display stands, and timing displays provided at venue."
+    ],
+    notes: [
+      "🌿 Themes: Sustainability (SDGs) • Net Zero • Green Tech • Smart Cities.",
+      "Free for PCCOE students (College PRN/ID required).",
+      "₹200 per team for external college participants.",
+      "Reporting: 9:00 AM | Event Starts: 10:00 AM on 10th October 2026.",
+      "🚨 Registration Deadline: 6th October 2026.",
+      "⚡ Innovate. Design. Build. Sustain. ✨ Showcase your creativity. Shape a greener future!"
+    ],
+    coordinators: [
+      { name: "Akshata Bhosale", phone: "+91 7276609137", tel: "tel:+917276609137" },
+      { name: "Amol Anbhule", phone: "+91 8459162850", tel: "tel:+918459162850" }
+    ],
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSfsMzFtm5lQRW9sz8ulKbW-IxXo9KxJ2dIRrMYvxRx1pQUWdg/viewform?usp=dialog"
   }
 ];
 
@@ -398,37 +452,44 @@ function renderAccordionGallery() {
     {
       id: 'the-site-investigation',
       label: '🔎 The Site Investigation',
-      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?q=80&w=900&auto=format&fit=crop',
-      alt: 'The Site Investigation Treasure Hunt',
+      image: 'assets/events/site-investigation.jpg',
+      alt: 'The Site Investigation — Fieldwork & Geotechnical Inspection',
       link: '#the-site-investigation'
     },
     {
       id: '3d-showdown',
       label: '🖨️ 3-D Showdown',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=900&auto=format&fit=crop',
-      alt: '3-D Showdown Model Printing Challenge',
+      image: 'assets/events/3d-showdown.jpg',
+      alt: '3-D Showdown — Structural Scale Model 3D Printing Challenge',
       link: '#3d-showdown'
     },
     {
       id: 'cadnova',
       label: '🛠️ CADNOVA 2026',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=900&auto=format&fit=crop',
-      alt: 'CADNOVA AutoCAD Drafting Challenge',
+      image: 'assets/events/cadnova.jpg',
+      alt: 'CADNOVA 2026 — AutoCAD Drafting & BIM Design Challenge',
       link: '#cadnova'
     },
     {
       id: 'structural-showdown',
       label: '🏗️ Structural Showdown',
-      image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=900&auto=format&fit=crop',
-      alt: 'Structural Showdown Truss & Load Testing',
+      image: 'assets/events/structural-showdown.jpg',
+      alt: 'Structural Showdown — Truss Fabrication & Hydraulic Load Testing',
       link: '#structural-showdown'
     },
     {
       id: 'beyond-the-benchmark',
       label: '🧭 Beyond The Benchmark',
-      image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=900&auto=format&fit=crop',
-      alt: 'Beyond The Benchmark Surveying Challenge',
+      image: 'assets/events/beyond-the-benchmark.jpg',
+      alt: 'Beyond The Benchmark — Advanced Total Station & Field Surveying Challenge',
       link: '#beyond-the-benchmark'
+    },
+    {
+      id: 'ecovision',
+      label: '🌱 ECOVISION 2026',
+      image: 'assets/events/ecovision.jpg',
+      alt: 'ECOVISION 2026 — Sustainable Green Infrastructure & Smart Cities Challenge',
+      link: '#ecovision'
     }
   ];
 

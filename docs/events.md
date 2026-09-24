@@ -41,6 +41,7 @@
 - **Event Coordinators (For Queries):**
   - **Arya Bhor:** [+91 8624943235](tel:+918624943235)
   - **Harshali Bhilkar:** [+91 8624807812](tel:+918624807812)
+- **Registration Link:** [Google Form Registration Link](https://docs.google.com/forms/d/e/1FAIpQLSfkQ4qN1KOk06yGOBNxP9TDAcIrrjIe_lqS2PPXv-RMa6uIdQ/viewform?usp=publish-editor)
 
 ---
 
@@ -144,7 +145,9 @@
   - Free for PCCOE students (College PRN/ID required).
   - Registration deadline: 8th October 2026.
 - **Registration Form:** [Google Form Registration Link](https://docs.google.com/forms/d/e/1FAIpQLSekcsZKyOGRiYfP1BcFNWfMAd8jwJZlOHJTFPY7golrlzIJgA/viewform?usp=publish-editor)
-- **Coordinators:** CiESA Civil Department Desk, PCCOE
+- **Event Coordinators (For Queries):**
+  - **Riya Gaikwad:** [+91 7385761731](tel:+917385761731)
+  - **Shravani Wable:** [+91 7721845655](tel:+917721845655)
 
 ---
 
@@ -189,6 +192,50 @@
   - **Vedika Shinde:** [+91 7038867783](tel:+917038867783)
   - **Yuvraj Chilwant:** [+91 9823045565](tel:+919823045565)
 - **Registration Link:** [Google Form Registration Link](https://docs.google.com/forms/d/e/1FAIpQLSfTAdxcEEEal1o-gtVTPu-NuX7fgKO_-EJlGb938rf9UTFKEQ/viewform?usp=publish-editor)
+
+---
+
+## 6. 🌱 ECOVISION 2026 — Ideas Today • A Greener Tomorrow
+- **Slug:** `ecovision`
+- **Title:** ECOVISION 2026
+- **Subtitle / Type:** Sustainable Innovation & Green Tech Pitch Challenge
+- **Tagline:** *"Innovate. Design. Build. Sustain."*
+- **Theme Slogan:** *"Ideas Today • A Greener Tomorrow. Showcase your innovative ideas, creativity & practical solutions for a sustainable and smarter future!"*
+- **Category:** Sustainability & Green Tech (SDGs, Net Zero, Smart Cities)
+- **Short Description:** Showcase your innovative ideas, creativity & practical solutions for a sustainable and smarter future!
+- **Full Description:** Ready to innovate, create & inspire? CiESA – STHAPATYA 2026–27 presents ECOVISION 2026! Ideas Today • A Greener Tomorrow. Showcase your innovative ideas, creativity, and practical engineering solutions for a sustainable and smarter future! Present your vision across Sustainability (SDGs), Net Zero emissions, Green Technology, and Smart Cities to shape resilient civil and urban infrastructure.
+- **Objective:** Propose actionable, sustainable, and engineering-driven solutions addressing UN Sustainable Development Goals (SDGs), Net Zero carbon targets, Green Building technologies, and Smart City development.
+- **Eligibility:** Undergraduate (UG) Students
+- **Team Size:** Maximum 4 Members
+- **Duration / Time:** Reporting: 9:00 AM | Event Starts: 10:00 AM (Max 7-minute presentation)
+- **Registration Fee:**
+  - **PCCOE Students:** FREE
+  - **Other College Students:** ₹200 per team
+- **Prize Pool:** ₹5,000 🏆
+- **Date & Time:** 10th October 2026 | Reporting: 9:00 AM | Starts: 10:00 AM
+- **Last Date to Register:** 6th October 2026
+- **Venue:** PCCOE Campus, Nigdi, Pune
+- **Core Themes:**
+  - Sustainability (SDGs)
+  - Net Zero
+  - Green Tech
+  - Smart Cities
+- **Rules & Regulations:**
+  1. Open to all Undergraduate (UG) students from any recognized college or university.
+  2. Team Size: Maximum of 4 members per team.
+  3. Presentation Time: Maximum 7 minutes per team, strictly timed, followed by jury Q&A.
+  4. Mandatory Poster: Participants must carry their physical poster during the presentation.
+  5. Core Themes: Projects must align with Sustainability (SDGs), Net Zero, Green Tech, or Smart Cities.
+  6. All team members must carry valid college Identity Cards at the time of reporting.
+  7. Decision of the evaluation jury and CiESA organizing committee will be final and binding.
+- **Materials & Requirements:**
+  - Teams must carry their printed presentation poster during the presentation.
+  - Presentation hall and evaluation facilities provided at venue.
+- **Student Coordinators (For Queries):**
+  - **Akshata Bhosale:** [+91 7276609137](tel:+917276609137)
+  - **Amol Anbhule:** [+91 8459162850](tel:+918459162850)
+- **Registration Link:** [Google Form Registration Link](https://docs.google.com/forms/d/e/1FAIpQLSfsMzFtm5lQRW9sz8ulKbW-IxXo9KxJ2dIRrMYvxRx1pQUWdg/viewform?usp=dialog)
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STHAPATYA 2026–27 | CiESA – PCCOE | Civil Engineering Technical Fest</title>
-  <meta name="description" content="STHAPATYA 2026–27, the flagship Civil Engineering technical fest by CiESA at PCCOE Pune. Site Investigation, 3D Showdown, CADNOVA — register now!" />
+  <meta name="description" content="STHAPATYA 2026–27, the flagship Civil Engineering technical fest by CiESA at PCCOE Pune. Site Investigation, 3D Showdown, CADNOVA, Structural Showdown, Beyond the Benchmark, ECOVISION — register now!" />
   <meta name="theme-color" content="#08090c" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="ParticleText.css" />
@@ -43,33 +43,15 @@
   <!-- ═══════════ MAIN SITE ═══════════ -->
   <div class="site-wrap" id="site-wrap">
 
-    <!-- Background -->
-    <div class="bg-grid"></div>
-
-    <!-- SVG truss decoration -->
-    <div class="bg-truss">
-      <svg viewBox="0 0 300 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0" y1="0" x2="300" y2="100" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="300" y1="100" x2="0" y2="200" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="0" y1="200" x2="300" y2="300" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="300" y1="300" x2="0" y2="400" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="0" y1="400" x2="300" y2="500" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="300" y1="500" x2="0" y2="600" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="0" y1="600" x2="300" y2="700" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="300" y1="700" x2="0" y2="800" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="0" y1="0" x2="0" y2="800" stroke="#e8a020" stroke-width="0.5" />
-        <line x1="300" y1="0" x2="300" y2="800" stroke="#e8a020" stroke-width="0.5" />
-        <!-- Cross bracing nodes -->
-        <circle cx="0" cy="0" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="300" cy="100" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="0" cy="200" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="300" cy="300" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="0" cy="400" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="300" cy="500" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="0" cy="600" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="300" cy="700" r="3" fill="#e8a020" opacity="0.3" />
-        <circle cx="0" cy="800" r="3" fill="#e8a020" opacity="0.3" />
-      </svg>
+    <!-- ─── DYNAMIC CIVIL ATMOSPHERE & BACKGROUND SYSTEM ─── -->
+    <div class="bg-scene" aria-hidden="true">
+      <div class="bg-aurora-orb aurora-amber"></div>
+      <div class="bg-aurora-orb aurora-cyan"></div>
+      <div class="bg-aurora-orb aurora-emerald"></div>
+      <div class="bg-cad-grid"></div>
+      <div class="bg-radar-sweep"></div>
+      <canvas id="bg-canvas" class="bg-canvas"></canvas>
+      <div class="bg-vignette"></div>
     </div>
 
     <!-- ─── CAD BLUEPRINT STRIP ─── -->
@@ -98,6 +80,7 @@
         <a href="#hero">Home</a>
         <a href="#about">About</a>
         <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
         <a href="#events" class="register-link">Register</a>
       </div>
       <div class="nav-toggle" id="nav-toggle">
@@ -110,6 +93,12 @@
     <!-- ─── HERO ─── -->
     <section class="hero" id="hero">
       <div class="hero-text">
+        <a href="#events" class="hero-live-badge">
+          <span class="live-pulse"></span>
+          <span class="live-text">⚡ REGISTRATIONS LIVE · 6 FLAGSHIP EVENTS · ₹30,000+ PRIZE POOL</span>
+          <span class="live-arrow">→</span>
+        </a>
+
         <div class="hero-tag">
           <span class="dot"></span>
           Dept. of Civil Engineering · CiESA PCCOE
@@ -123,7 +112,7 @@
         <p class="hero-sub">
           The flagship technical symposium organized by the Civil Engineering
           Students Association. Compete, build, investigate, and innovate
-          across five high-octane challenges at PCCOE.
+          across six high-octane challenges at PCCOE.
         </p>
 
         <div class="hero-meta">
@@ -137,7 +126,7 @@
           </div>
           <div class="hero-meta-block">
             <span class="label">Prize Pool</span>
-            <span class="value">₹25,000+</span>
+            <span class="value">₹30,000+</span>
           </div>
         </div>
 
@@ -286,11 +275,11 @@
           </div>
           <div class="stats-strip reveal reveal-d2">
             <div class="stat-block">
-              <div class="num">5</div>
+              <div class="num">6</div>
               <div class="lbl">Civil Events</div>
             </div>
             <div class="stat-block">
-              <div class="num">₹25K+</div>
+              <div class="num">₹30K+</div>
               <div class="lbl">Prize Pool</div>
             </div>
             <div class="stat-block">
@@ -304,7 +293,7 @@
           </div>
         </div>
 
-        <!-- 4 Core Pillars of Civil Engineering -->
+        <!-- Core Pillars of Civil Engineering -->
         <div class="civil-domains reveal">
           <div class="domain-card">
             <div class="domain-code">DISCIPLINE 01 // STRUCTURAL</div>
@@ -325,6 +314,11 @@
             <div class="domain-code">DISCIPLINE 04 // PROTOTYPING</div>
             <div class="domain-title">🖨️ Additive Civil Tech</div>
             <div class="domain-desc">Computational 3D modeling, slicing optimization, and physical prototype fabrication bridging digital design to tangible civil scale models.</div>
+          </div>
+          <div class="domain-card">
+            <div class="domain-code">DISCIPLINE 05 // SUSTAINABILITY</div>
+            <div class="domain-title">🌱 Green Tech & Smart Cities</div>
+            <div class="domain-desc">Net Zero infrastructure, UN Sustainable Development Goals (SDGs), eco-resilient design, and smart urban solutions.</div>
           </div>
         </div>
       </div>
@@ -377,6 +371,36 @@
         </div>
       </div>
 
+      <!-- ─── CENTRAL CONTACTS ─── -->
+      <div class="footer-contacts" id="fest-contacts">
+        <div class="footer-contacts-header">
+          <span class="f-contact-badge">📞 FOR QUERIES & CONTACT</span>
+          <span class="f-contact-sub">CiESA · STHAPATYA 2026–27 Secretariat</span>
+        </div>
+        <div class="footer-contacts-grid">
+          <div class="footer-contact-card">
+            <div class="f-contact-avatar">👤</div>
+            <div class="f-contact-info">
+              <span class="f-contact-name">Ashish Patil</span>
+              <span class="f-contact-role">Fest Coordinator · CiESA</span>
+              <a href="tel:+919130515372" class="f-contact-phone">
+                <span>📞</span> +91 91305 15372
+              </a>
+            </div>
+          </div>
+          <div class="footer-contact-card">
+            <div class="f-contact-avatar">👤</div>
+            <div class="f-contact-info">
+              <span class="f-contact-name">Deepika Verma</span>
+              <span class="f-contact-role">Fest Coordinator · CiESA</span>
+              <a href="tel:+917038726165" class="f-contact-phone">
+                <span>📞</span> +91 70387 26165
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="footer-top">
         <div class="footer-left">
           <div class="footer-mark">STHAPAT<em>Y</em>A</div>
@@ -387,6 +411,7 @@
           <a href="#hero">Home</a>
           <a href="#about">About</a>
           <a href="#events">Events</a>
+          <a href="#contact">Contact</a>
           <a href="#events" class="register-link">Register</a>
         </div>
       </div>
@@ -394,6 +419,13 @@
         <p>&copy; 2026 CiESA – STHAPATYA. Department of Civil Engineering, PCCOE. Built with Structural Precision.</p>
       </div>
     </footer>
+
+    <!-- Floating Quick Register Action Button -->
+    <a href="#events" class="floating-reg-bar" id="floating-reg-bar" aria-label="Register for Events">
+      <span class="fl-pulse"></span>
+      <span class="fl-text">Registrations Open · 6 Events</span>
+      <span class="fl-btn">Register Now →</span>
+    </a>
 
   </div><!-- /site-wrap -->
 
@@ -405,6 +437,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="ParticleText.js"></script>
   <script src="AccordionGallery.js"></script>
+  <script src="BackgroundCanvas.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

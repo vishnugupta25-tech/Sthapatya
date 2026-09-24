@@ -86,7 +86,7 @@
         img.src = item.image;
         img.alt = item.alt || item.label || '';
         img.draggable = false;
-        img.loading = 'lazy';
+        img.loading = 'eager';
         media.appendChild(img);
 
         const overlay = document.createElement('span');
@@ -243,12 +243,12 @@
         const rot = isActive ? 0 : i < this.active ? this.tilt : -this.tilt;
         const rotProp = this.vertical ? { rotateX: -rot } : { rotateY: rot };
 
-        tl.to(panel, { flexGrow: isActive ? grow : 1, ...rotProp, duration: dur, ease: this.ease }, 0);
+        tl.to(panel, { flexGrow: isActive ? grow : 1, '--ag-dim': isActive ? 0 : 0.35, ...rotProp, duration: dur, ease: this.ease }, 0);
 
         if (media) {
           const drift = Math.max(-1.5, Math.min(1.5, this.active - i));
           const shift = drift * this.parallax * mediaSize * 0.06;
-          const gray = this.grayscale ? (isActive ? 0 : 1) : 0;
+          const gray = this.grayscale ? (isActive ? 0 : 0.75) : 0;
           tl.to(
             media,
             {
