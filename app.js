@@ -66,7 +66,7 @@ const EVENTS = [
     duration: "10 AM onwards",
     feePCCOE: "FREE",
     feeOther: "₹200/team",
-    prize: "Up to ₹5,000",
+    prize: "₹4,000 (1 Winner)",
     date: "9–10 Oct 2026",
     lastDate: "4th Oct 2026",
     venue: "Building No. 9, PCCOE",
@@ -74,13 +74,15 @@ const EVENTS = [
       "Teams must have 2 to 3 members.",
       "All models must be original designs created during the designated event rounds.",
       "Slicing settings and material usage must adhere to jury-specified parameters.",
-      "Decision of the jury on model precision, printability, and aesthetics is final."
+      "Decision of the jury on model precision, printability, and aesthetics is final.",
+      "Only 1 winner will be awarded the grand prize of ₹4,000 (Winner takes all)."
     ],
     materials: [
       "3D printers and designated workstations available at venue.",
       "Slicer software pre-installed on lab systems."
     ],
     notes: [
+      "🏆 Prize Pool: ₹4,000 for 1 Winner (Winner takes all).",
       "Free for PCCOE students.",
       "₹200 per team for external college participants.",
       "Register before 4th October 2026."

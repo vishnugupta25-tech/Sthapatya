@@ -60,7 +60,7 @@
 - **Registration Fee:**
   - **PCCOE Students:** FREE
   - **Students from Other Colleges:** ₹200 per team
-- **Prize Pool:** Up to ₹5,000 🏆
+- **Prize Pool:** ₹4,000 🏆 (Only 1 Winner — Winner Takes All)
 - **Date & Time:** 9th – 10th October 2026 | 10:00 AM onwards
 - **Last Date to Register:** 4th October 2026
 - **Venue:** Building No. 9, PCCOE (Pimpri Chinchwad College of Engineering)
@@ -69,6 +69,7 @@
   2. All models must be original designs created during the designated event rounds.
   3. Slicing settings and material usage must adhere to the parameters given by the technical jury.
   4. Decision of the jury on model precision, printability, and aesthetics will be final.
+  5. Only 1 winning team will be declared for the ₹4,000 prize pool (Winner takes all).
 - **Registration Form:** [Direct Google Form Link](https://docs.google.com/forms/d/e/1FAIpQLSckeJ8YORvzo6XExdpaiuNxK7nqyLbiVM8PdQ-NG5b9jQtCeQ/viewform?usp=publish-editor)
 - **Event Coordinators (For Queries):**
   - **Parv Rathod:** [+91 9145373155](tel:+919145373155)
