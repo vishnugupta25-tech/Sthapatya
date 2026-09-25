@@ -251,39 +251,40 @@ const EVENTS = [
     shortDesc: "Showcase your innovative ideas, creativity & practical solutions for a sustainable and smarter future!",
     fullDesc: "Ready to innovate, create & inspire? CiESA – STHAPATYA 2026–27 presents ECOVISION 2026 — Ideas Today • A Greener Tomorrow. Showcase your innovative ideas, creativity, and practical engineering solutions for a sustainable and smarter future! Present your vision across Sustainability (SDGs), Net Zero emissions, Green Technology, and Smart Cities to shape resilient civil and urban infrastructure.",
     objective: "Propose actionable, sustainable, and engineering-driven solutions addressing UN Sustainable Development Goals (SDGs), Net Zero carbon targets, Green Building technologies, and Smart City development.",
-    teamSize: "Maximum 4 (UG)",
+    teamSize: "Max 4 Members (UG)",
     duration: "Reporting: 9 AM | Starts: 10 AM (Max 7-min Pitch)",
     feePCCOE: "FREE",
     feeOther: "₹200/team",
     prize: "₹5,000",
-    date: "10th Oct 2026",
+    date: "9–10 Oct 2026",
     lastDate: "6th Oct 2026",
     venue: "PCCOE Campus, Nigdi, Pune",
     rules: [
       "Open to all Undergraduate (UG) students from any recognized college or university.",
       "Team Size: Maximum of 4 members per team.",
       "Presentation Time: Maximum 7 minutes per team, strictly timed, followed by jury Q&A.",
-      "Mandatory Poster: Participants must carry their physical poster during presentation.",
+      "Mandatory Poster: Participants must carry their physical poster during the presentation.",
       "Core Themes: Projects must align with Sustainability (SDGs), Net Zero, Green Tech, or Smart Cities.",
       "All team members must carry valid college Identity Cards at the time of reporting.",
-      "Decision of the evaluation jury and CiESA organizing committee will be final and binding."
+      "Decision of the evaluation jury and organizing committee will be final and binding."
     ],
     rounds: [
-      { name: "Reporting & Verification (9:00 AM – 10:00 AM)", desc: "Desk registration, ID verification, and presentation venue allotment." },
+      { name: "Reporting & Verification", desc: "Desk registration, ID verification, and presentation venue allotment." },
       { name: "Poster & Concept Pitch (Max 7 Minutes)", desc: "Teams pitch their sustainable idea and display physical poster before the judging panel." },
       { name: "Jury Q&A & Impact Assessment", desc: "Evaluation based on innovation, feasibility, SDG relevance, engineering merit, and clarity." }
     ],
     materials: [
-      "Teams must carry their physical poster during the presentation.",
+      "Teams must carry their printed presentation poster during presentation.",
       "Presentation room, display stands, and timing displays provided at venue."
     ],
     notes: [
       "🌿 Themes: Sustainability (SDGs) • Net Zero • Green Tech • Smart Cities.",
-      "Free for PCCOE students (College PRN/ID required).",
-      "₹200 per team for external college participants.",
-      "Reporting: 9:00 AM | Event Starts: 10:00 AM on 10th October 2026.",
-      "🚨 Registration Deadline: 6th October 2026.",
-      "⚡ Innovate. Design. Build. Sustain. ✨ Showcase your creativity. Shape a greener future!"
+      "🎓 Eligibility: Open to all Undergraduate (UG) students.",
+      "Free for PCCOE students.",
+      "₹200 per team for other college students.",
+      "📌 Carry your physical poster during the presentation (Max 7 mins).",
+      "🚨 Last Date to Register: 6th October 2026.",
+      "⚡ Innovate. Design. Build. Sustain. ✨ Shape a greener future!"
     ],
     coordinators: [
       { name: "Akshata Bhosale", phone: "+91 7276609137", tel: "tel:+917276609137" },

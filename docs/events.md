@@ -213,7 +213,7 @@
   - **PCCOE Students:** FREE
   - **Other College Students:** ₹200 per team
 - **Prize Pool:** ₹5,000 🏆
-- **Date & Time:** 10th October 2026 | Reporting: 9:00 AM | Starts: 10:00 AM
+- **Date & Time:** 9th – 10th October 2026 | 10:00 AM onwards
 - **Last Date to Register:** 6th October 2026
 - **Venue:** PCCOE Campus, Nigdi, Pune
 - **Core Themes:**
