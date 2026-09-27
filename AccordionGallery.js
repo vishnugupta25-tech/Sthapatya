@@ -288,6 +288,9 @@
         if (item.prize) {
           metaBox.innerHTML += `<span class="ag-meta-chip ag-meta-chip--prize">🏆 ${item.prize}</span>`;
         }
+        if (item.stages) {
+          metaBox.innerHTML += `<span class="ag-meta-chip ag-meta-chip--stages" style="border-color:${catCol}50;color:${catCol};">🏆 2 Stages (Online + Offline)</span>`;
+        }
         if (item.teamSize) {
           metaBox.innerHTML += `<span class="ag-meta-chip">👥 ${item.teamSize}</span>`;
         }

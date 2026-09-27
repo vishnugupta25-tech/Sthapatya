@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="AccordionGallery.css" />
   <link rel="stylesheet" href="DepthText.css" />
   <link rel="stylesheet" href="SlideCommit.css" />
+  <link rel="stylesheet" href="FlexCarousel.css" />
 </head>
 <body>
 
@@ -84,6 +85,7 @@
       <div class="nav-menu" id="nav-menu">
         <a href="#hero">Home</a>
         <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
         <a href="#events">Events</a>
         <a href="#contact">Contact</a>
         <a href="https://www.instagram.com/ciesa.pccoe?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="nav-social-link" title="Follow @ciesa.pccoe on Instagram" aria-label="Follow CiESA on Instagram">
@@ -304,34 +306,19 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Core Pillars of Civil Engineering -->
-        <div class="civil-domains reveal">
-          <div class="domain-card">
-            <div class="domain-code">DISCIPLINE 01 // STRUCTURAL</div>
-            <div class="domain-title">🏗️ Mechanics & Materials</div>
-            <div class="domain-desc">Truss equilibrium, deflection curves, load-bearing capacities, and limit state behavior under progressive mechanical stress.</div>
-          </div>
-          <div class="domain-card">
-            <div class="domain-code">DISCIPLINE 02 // DRAFTING & BIM</div>
-            <div class="domain-title">📐 CAD & NBC Planning</div>
-            <div class="domain-desc">AutoCAD drafting, building services (MEP), municipal bye-laws scrutiny, FSI calculations, and ISO/IS colour standards.</div>
-          </div>
-          <div class="domain-card">
-            <div class="domain-code">DISCIPLINE 03 // GEOMATICS</div>
-            <div class="domain-title">🧭 Surveying & Geodesy</div>
-            <div class="domain-desc">Benchmarking, fly levelling, theodolite traverse computations, total station precision sighting, and ground contour mapping.</div>
-          </div>
-          <div class="domain-card">
-            <div class="domain-code">DISCIPLINE 04 // PROTOTYPING</div>
-            <div class="domain-title">🖨️ Additive Civil Tech</div>
-            <div class="domain-desc">Computational 3D modeling, slicing optimization, and physical prototype fabrication bridging digital design to tangible civil scale models.</div>
-          </div>
-          <div class="domain-card">
-            <div class="domain-code">DISCIPLINE 05 // SUSTAINABILITY</div>
-            <div class="domain-title">🌱 Green Tech & Smart Cities</div>
-            <div class="domain-desc">Net Zero infrastructure, UN Sustainable Development Goals (SDGs), eco-resilient design, and smart urban solutions.</div>
-          </div>
+    <!-- ─── GALLERY ─── -->
+    <section id="gallery" class="gallery-sec">
+      <div class="container">
+        <div class="sec-head reveal">
+          <div class="sec-eyebrow">Visual Archive // CiESA Showcase</div>
+          <h2 class="sec-title">Gallery</h2>
+        </div>
+
+        <div class="gallery-carousel-wrap reveal">
+          <div id="flex-carousel-root" style="width: 100%; height: 100%; position: relative;"></div>
         </div>
       </div>
     </section>
@@ -447,6 +434,7 @@
         <div class="footer-right">
           <a href="#hero">Home</a>
           <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
           <a href="#events">Events</a>
           <a href="#contact">Contact</a>
           <a href="https://www.instagram.com/ciesa.pccoe?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="footer-link-ig">
@@ -479,8 +467,10 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="ogl.umd.js"></script>
   <script src="ParticleText.js"></script>
   <script src="AccordionGallery.js"></script>
+  <script src="FlexCarousel.js"></script>
   <script src="BackgroundCanvas.js"></script>
   <script src="DepthText.js"></script>
   <script src="SlideCommit.js"></script>

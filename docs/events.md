@@ -52,8 +52,12 @@
 - **Tagline:** *"DESIGN IT. MODEL IT. PRINT IT. SHOW IT."*
 - **Theme Slogan:** *"Think in 3D. Build in 3D. Own the Showdown. Turning imagination into innovation, one layer at a time."*
 - **Category:** Additive Manufacturing & Computational 3D Modeling
-- **Short Description:** Put your creativity and design skills to the test as you transform a digital concept into a tangible 3D-printed model.
+- **Short Description:** 🏆 Event in 2 Stages: Stage 1 (Online Digital Submission) & Stage 2 (Offline 3D Printing & Presentation at PCCOE).
 - **Full Description:** Have an idea? Bring it to life! Put your creativity, design skills, and 3D-printing abilities to the test as you transform a digital concept into a real, tangible 3D model using 3D printers. This isn't just about making a model — it's about turning imagination into innovation, one layer at a time.
+- **Event Format (2 Stages):**
+  - 🏆 **EVENT IN 2 STAGES**
+  - 1️⃣ **STAGE 1 – ONLINE 💻:** Design & submit your 3D model digitally.
+  - 2️⃣ **STAGE 2 – OFFLINE 🖨️:** Shortlisted teams will 3D print their model and present it at PCCOE.
 - **Objective:** Design, model, slice, and fabricate an optimized, functional 3D prototype that solves a given structural/spatial problem.
 - **Team Size:** Minimum 2 | Maximum 3 members
 - **Duration:** 10:00 AM onwards (9th & 10th October 2026)
@@ -65,11 +69,13 @@
 - **Last Date to Register:** 4th October 2026
 - **Venue:** Building No. 9, PCCOE (Pimpri Chinchwad College of Engineering)
 - **Rules & Regulations:**
-  1. Teams must have 2 to 3 members.
-  2. All models must be original designs created during the designated event rounds.
-  3. Slicing settings and material usage must adhere to the parameters given by the technical jury.
-  4. Decision of the jury on model precision, printability, and aesthetics will be final.
-  5. Only 1 winning team will be declared for the ₹4,000 prize pool (Winner takes all).
+  1. **Stage 1 (Online):** Teams design and submit their digital 3D model files (.STL / .OBJ / project files) digitally before the deadline.
+  2. **Stage 2 (Offline):** Shortlisted teams from Stage 1 will 3D print their model and present it live in front of the jury at PCCOE.
+  3. Teams must have 2 to 3 members.
+  4. All models must be original designs created during the designated event rounds.
+  5. Slicing settings and material usage must adhere to the parameters given by the technical jury.
+  6. Decision of the jury on model precision, printability, and aesthetics will be final.
+  7. Only 1 winning team will be declared for the ₹4,000 prize pool (Winner takes all).
 - **Registration Form:** [Direct Google Form Link](https://docs.google.com/forms/d/e/1FAIpQLSckeJ8YORvzo6XExdpaiuNxK7nqyLbiVM8PdQ-NG5b9jQtCeQ/viewform?usp=publish-editor)
 - **Event Coordinators (For Queries):**
   - **Parv Rathod:** [+91 9145373155](tel:+919145373155)

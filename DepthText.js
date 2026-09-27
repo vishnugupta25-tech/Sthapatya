@@ -105,6 +105,8 @@
 
     initEvents() {
       const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
+      const finePointer = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches ?? true;
+      const canTrackPointer = this.pointerTracking && finePointer && !reducedMotion;
 
       const applyTransform = () => {
         if (this.stage) {
@@ -121,15 +123,16 @@
 
       const updateCoordinates = (clientX, clientY) => {
         if (!this.root) return;
-        const rect = this.root.getBoundingClientRect();
+        const hero = document.getElementById('hero') || this.root;
+        const rect = hero.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
 
         this.activePointer = true;
-        const x = clamp((clientX - (rect.left + rect.width / 2)) / (rect.width * 0.8), -1.2, 1.2);
-        const y = clamp((clientY - (rect.top + rect.height / 2)) / (rect.height * 0.8), -1.2, 1.2);
+        const x = clamp((clientX - (rect.left + rect.width / 2)) / (rect.width * 0.5), -1.2, 1.2);
+        const y = clamp((clientY - (rect.top + rect.height / 2)) / (rect.height * 0.5), -1.2, 1.2);
 
-        this.target.x = this.baseRotation.x - y * this.safeTilt * 1.2;
-        this.target.y = this.baseRotation.y + x * this.safeTilt * 1.2;
+        this.target.x = this.baseRotation.x - y * this.safeTilt * 1.5;
+        this.target.y = this.baseRotation.y + x * this.safeTilt * 1.5;
       };
 
       const handlePointerMove = event => {
@@ -159,7 +162,12 @@
         }
       };
 
-      if (this.pointerTracking) {
+      if (canTrackPointer) {
+        const heroEl = document.getElementById('hero');
+        if (heroEl) {
+          heroEl.addEventListener('pointermove', handlePointerMove, { passive: true });
+          heroEl.addEventListener('pointerleave', handlePointerLeave, { passive: true });
+        }
         window.addEventListener('pointermove', handlePointerMove, { passive: true });
         window.addEventListener('pointerleave', handlePointerLeave, { passive: true });
         window.addEventListener('blur', handlePointerLeave);
@@ -176,6 +184,11 @@
       }
 
       this._cleanupEvents = () => {
+        const heroEl = document.getElementById('hero');
+        if (heroEl) {
+          heroEl.removeEventListener('pointermove', handlePointerMove);
+          heroEl.removeEventListener('pointerleave', handlePointerLeave);
+        }
         window.removeEventListener('pointermove', handlePointerMove);
         window.removeEventListener('pointerleave', handlePointerLeave);
         window.removeEventListener('blur', handlePointerLeave);
@@ -185,13 +198,31 @@
           this.root.removeEventListener('touchend', handlePointerLeave);
         }
         window.removeEventListener('deviceorientation', handleOrientation);
+        if (this._observer) this._observer.disconnect();
       };
 
+      let inView = true;
+      if (window.IntersectionObserver && this.root) {
+        this._observer = new IntersectionObserver(([entry]) => {
+          inView = entry.isIntersecting;
+          if (inView && !this.frameId) {
+            this.startTime = performance.now();
+            this.frameId = requestAnimationFrame(tick);
+          }
+        }, { threshold: 0.1 });
+        this._observer.observe(this.root);
+      }
+
       const tick = now => {
+        if (!inView) {
+          this.frameId = 0;
+          return;
+        }
+
         if ((!canTrackPointer || !this.activePointer) && this.autoOrbit) {
           const elapsed = (now - this.startTime) / 1000;
           const orbit = elapsed * this.safeOrbitSpeed * Math.PI * 2;
-          const fallbackAmount = canTrackPointer ? 0.18 : 0.55;
+          const fallbackAmount = canTrackPointer ? 0.28 : 0.6;
           this.target.x = this.baseRotation.x + Math.sin(orbit) * this.safeTilt * fallbackAmount;
           this.target.y = this.baseRotation.y + Math.cos(orbit * 0.85) * this.safeTilt * fallbackAmount;
         }

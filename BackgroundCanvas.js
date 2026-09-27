@@ -18,7 +18,7 @@
       this.mouse = { x: -1000, y: -1000, active: false };
       this.width = 0;
       this.height = 0;
-      this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.dpr = 1;
       this.animId = null;
       this.isRunning = false;
 
@@ -78,14 +78,23 @@
         }, 800);
       }, { passive: true });
 
-      // Pause rendering when tab is hidden to conserve battery
+      // Pause rendering when tab is hidden or scrolled out of hero view
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           this.stop();
-        } else {
+        } else if (window.scrollY <= window.innerHeight * 1.6) {
           this.start();
         }
       });
+
+      window.addEventListener('scroll', () => {
+        const scrolledFar = window.scrollY > window.innerHeight * 1.6;
+        if (scrolledFar && this.isRunning) {
+          this.stop();
+        } else if (!scrolledFar && !this.isRunning && !document.hidden) {
+          this.start();
+        }
+      }, { passive: true });
 
       this.createNodes();
       this.start();
@@ -99,7 +108,7 @@
       this.ctx.scale(this.dpr, this.dpr);
 
       // Re-adjust node count on significant resize
-      const targetCount = this.width < 768 ? 24 : 52;
+      const targetCount = this.width < 768 ? 16 : 30;
       if (this.nodes.length !== targetCount) {
         this.createNodes();
       }
@@ -107,7 +116,7 @@
 
     createNodes() {
       const isMobile = this.width < 768;
-      const count = isMobile ? 24 : 52;
+      const count = isMobile ? 16 : 30;
       this.nodes = [];
 
       for (let i = 0; i < count; i++) {

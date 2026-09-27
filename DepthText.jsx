@@ -82,15 +82,16 @@ const DepthText = ({
     }
 
     const handlePointerMove = event => {
-      const rect = root.getBoundingClientRect();
+      const hero = document.getElementById('hero') || root;
+      const rect = hero.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
 
       activePointer = true;
-      const x = clamp((event.clientX - (rect.left + rect.width / 2)) / (rect.width * 0.8), -1, 1);
-      const y = clamp((event.clientY - (rect.top + rect.height / 2)) / (rect.height * 0.8), -1, 1);
+      const x = clamp((event.clientX - (rect.left + rect.width / 2)) / (rect.width * 0.5), -1.2, 1.2);
+      const y = clamp((event.clientY - (rect.top + rect.height / 2)) / (rect.height * 0.5), -1.2, 1.2);
 
-      target.x = baseRotation.x - y * safeTilt;
-      target.y = baseRotation.y + x * safeTilt;
+      target.x = baseRotation.x - y * safeTilt * 1.5;
+      target.y = baseRotation.y + x * safeTilt * 1.5;
     };
 
     const handlePointerLeave = () => {

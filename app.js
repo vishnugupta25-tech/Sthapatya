@@ -59,9 +59,21 @@ const EVENTS = [
     catColor: "#a78bfa",
     accent: "linear-gradient(135deg, #a78bfa, #7c3aed)",
     iconBg: "rgba(167,139,250,0.1)",
-    shortDesc: "Transform a digital concept into a tangible 3D-printed model — creativity meets fabrication.",
+    shortDesc: "🏆 Event in 2 Stages: Stage 1 (Online Digital Submission) & Stage 2 (Offline 3D Printing & Presentation at PCCOE).",
     fullDesc: "Have an idea? Bring it to life! Put your creativity, design skills, and 3D-printing abilities to the test as you transform a digital concept into a real, tangible 3D model using 3D printers. This isn't just about making a model — it's about turning imagination into innovation, one layer at a time.",
     objective: "Design, model, slice, and fabricate an optimized, functional 3D prototype that solves a given structural/spatial problem.",
+    stages: [
+      {
+        stage: "1️⃣ STAGE 1 – ONLINE 💻",
+        badge: "Online Mode",
+        desc: "Design & submit your 3D model digitally."
+      },
+      {
+        stage: "2️⃣ STAGE 2 – OFFLINE 🖨️",
+        badge: "At PCCOE Campus",
+        desc: "Shortlisted teams will 3D print their model and present it at PCCOE."
+      }
+    ],
     teamSize: "2 – 3",
     duration: "10 AM onwards",
     feePCCOE: "FREE",
@@ -71,17 +83,21 @@ const EVENTS = [
     lastDate: "4th Oct 2026",
     venue: "Building No. 9, PCCOE",
     rules: [
-      "Teams must have 2 to 3 members.",
-      "All models must be original designs created during the designated event rounds.",
-      "Slicing settings and material usage must adhere to jury-specified parameters.",
-      "Decision of the jury on model precision, printability, and aesthetics is final.",
+      "🏆 STAGE 1 (ONLINE): Teams design and submit their digital 3D model files (.STL / .OBJ / CAD files) digitally before the deadline.",
+      "🏆 STAGE 2 (OFFLINE): Shortlisted teams from Stage 1 will 3D print their model and present it live in front of the jury at PCCOE.",
+      "Teams must consist of 2 to 3 members.",
+      "All models must be original designs created during the designated challenge rounds.",
+      "Slicing settings, infill density, and material usage must adhere to jury-specified parameters.",
+      "Decision of the technical jury on model precision, printability, and aesthetics is final.",
       "Only 1 winner will be awarded the grand prize of ₹4,000 (Winner takes all)."
     ],
     materials: [
-      "3D printers and designated workstations available at venue.",
+      "Stage 1: Any CAD/3D modeling software (Fusion 360, Blender, SolidWorks, AutoCAD, etc.).",
+      "Stage 2: 3D printers and designated workstations available at PCCOE venue.",
       "Slicer software pre-installed on lab systems."
     ],
     notes: [
+      "🏆 Event in 2 Stages: 1️⃣ Stage 1 (Online) — Design & submit digitally | 2️⃣ Stage 2 (Offline) — Shortlisted teams print & present at PCCOE.",
       "🏆 Prize Pool: ₹4,000 for 1 Winner (Winner takes all).",
       "Free for PCCOE students.",
       "₹200 per team for external college participants.",
@@ -340,17 +356,22 @@ window.addEventListener('DOMContentLoaded', () => {
       splash.classList.add('done');
       site.style.display = 'block';
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => site.classList.add('show'));
+        requestAnimationFrame(() => {
+          site.classList.add('show');
+          if (window.galleryCarousel) window.galleryCarousel.wake();
+        });
       });
       setTimeout(() => {
         if (particleInstance) particleInstance.destroy();
         splash.remove();
+        if (window.galleryCarousel) window.galleryCarousel.wake();
       }, 1000);
     }
   }, 3200);
 
   renderCards();
   renderAccordionGallery();
+  renderGalleryCarousel();
   renderHeroDepthText();
   initHeroStructureTilt();
   initReveal();
@@ -434,6 +455,7 @@ function renderCards() {
         <div class="card-tag">"${ev.tagline}"</div>
         <p class="card-excerpt">${ev.shortDesc}</p>
         <div class="card-chips">
+          ${ev.stages ? `<span class="chip chip--stages" style="border-color:${ev.catColor}60;color:${ev.catColor};"><span class="chip-ico">🏆</span>2 Stages</span>` : ''}
           <span class="chip"><span class="chip-ico">👥</span>${ev.teamSize}</span>
           <span class="chip"><span class="chip-ico">⏱️</span>${ev.duration}</span>
           <span class="chip"><span class="chip-ico">💰</span>PCCOE: ${ev.feePCCOE}</span>
@@ -493,6 +515,7 @@ function renderAccordionGallery() {
     feePCCOE: ev.feePCCOE,
     feeOther: ev.feeOther,
     shortDesc: ev.shortDesc,
+    stages: ev.stages,
     formLink: ev.formLink,
     image: imageMap[ev.id] || 'assets/events/cadnova.jpg',
     alt: `${ev.title} — ${ev.subtitle}`,
@@ -534,6 +557,212 @@ function renderAccordionGallery() {
 
 
 // ═══════════════════════════════════════
+// GALLERY CAROUSEL (React Bits FlexCarousel)
+// ═══════════════════════════════════════
+
+// NOTE FOR USER: Real Sthapatya event photos. When you send more photos, we append them here!
+const GALLERY_ITEMS = [
+  {
+    src: 'assets/gallery/gallery-07.jpg',
+    alt: 'Dignitaries and student coordinators inaugurating the event by cutting the ceremonial ribbon',
+    title: 'Ribbon-Cutting & Event Launch',
+    subtitle: 'Official Inauguration · CiESA Sthapatya'
+  },
+  {
+    src: 'assets/gallery/gallery-05.jpg',
+    alt: 'CiESA Sthapatya 2026 Grand Inauguration Ceremony with students and faculty',
+    title: 'Inauguration Ceremony',
+    subtitle: 'Flagship National Symposium Kickoff'
+  },
+  {
+    src: 'assets/gallery/gallery-25.jpg',
+    alt: 'Faculty dignitaries holding up and unveiling the official Sthapatya symposium souvenir brochure on stage',
+    title: 'Sthapatya Souvenir Unveiling',
+    subtitle: 'Official Brochure Release & Faculty Felicitation'
+  },
+  {
+    src: 'assets/gallery/gallery-08.jpg',
+    alt: 'Civil engineering faculty dignitaries with CiESA student coordinators and organizing team',
+    title: 'Faculty Dignitaries & Student Leads',
+    subtitle: 'Surveying & Civil Engineering Labs'
+  },
+  {
+    src: 'assets/gallery/gallery-06.jpg',
+    alt: 'Civil engineering faculty members and students attending keynote session',
+    title: 'Keynote & Faculty Address',
+    subtitle: 'Department of Civil Engineering · PCCOE'
+  },
+  {
+    src: 'assets/gallery/gallery-21.jpg',
+    alt: 'CiESA volunteer team standing under decorative surveying chains and pennants along the department corridor',
+    title: 'Civil Corridor & CiESA Volunteers',
+    subtitle: 'Festive Civil Decor & Ground Coordination'
+  },
+  {
+    src: 'assets/gallery/gallery-04.jpg',
+    alt: 'CiESA student coordinators and organizers with the vibrant Sthapatya emblem at PCCOE',
+    title: 'Sthapatya Arena & CiESA Crew',
+    subtitle: 'PCCOE Campus Grounds · Building No. 9'
+  },
+  {
+    src: 'assets/gallery/gallery-09.jpg',
+    alt: 'CiESA coordinators in team hoodies managing events and supporting participants',
+    title: 'CiESA Volunteers & Operations',
+    subtitle: 'Building No. 9 · Team Coordination'
+  },
+  {
+    src: 'assets/gallery/gallery-16.jpg',
+    alt: 'Coordinator explaining event rules and problem statement to participants seated in classroom',
+    title: 'Participant Briefing & Problem Statement',
+    subtitle: 'Competition Orientation · Building No. 9'
+  },
+  {
+    src: 'assets/gallery/gallery-22.jpg',
+    alt: 'Classroom session with participants listening to coordinators in front of a whiteboard scoring matrix',
+    title: 'Event Briefing & Scoring Grid',
+    subtitle: 'Classroom Round Setup & Participant Rules'
+  },
+  {
+    src: 'assets/gallery/gallery-17.jpg',
+    alt: 'Coordinators conducting interactive technical challenge round with student teams',
+    title: 'Civil Technical Quiz & Debate',
+    subtitle: 'Rapid Response & Structural Logic'
+  },
+  {
+    src: 'assets/gallery/gallery-18.jpg',
+    alt: 'Civil engineering students aligning and taking level measurements using an electronic total station on PCCOE campus field',
+    title: 'Total Station & Geodetic Surveying',
+    subtitle: 'Beyond the Benchmark · Precision Field Sighting'
+  },
+  {
+    src: 'assets/gallery/gallery-26.jpg',
+    alt: 'Civil engineering student sighting through an auto level telescope on tripod while partner records field book readings',
+    title: 'Auto Level & Differential Leveling',
+    subtitle: 'Beyond the Benchmark · Staff & Instrument Sighting'
+  },
+  {
+    src: 'assets/gallery/gallery-01.jpg',
+    alt: 'Civil engineering students collaborating on structural bridge and truss models',
+    title: 'Truss Showdown Workshop',
+    subtitle: 'Model Fabrication & Limit State Assembly'
+  },
+  {
+    src: 'assets/gallery/gallery-02.jpg',
+    alt: 'Team of participants assembling structural frame members with precision instruments',
+    title: 'Structural Precision Challenge',
+    subtitle: 'Hands-on Engineering & Alignment'
+  },
+  {
+    src: 'assets/gallery/gallery-11.jpg',
+    alt: 'Student incrementally adding gravel weight to suspended bucket to test truss bridge capacity',
+    title: 'Structural Load & Failure Testing',
+    subtitle: 'Truss Deflection & Breaking Stress Challenge'
+  },
+  {
+    src: 'assets/gallery/gallery-23.jpg',
+    alt: 'Faculty members and jury seated at evaluation table inside the Civil Engineering Materials Testing Laboratory',
+    title: 'Materials & Testing Lab Jury',
+    subtitle: 'Faculty Scrutiny Desk · Concrete & Testing Lab'
+  },
+  {
+    src: 'assets/gallery/gallery-03.jpg',
+    alt: 'Student presenting environmental engineering and sustainable development research project to jury',
+    title: 'ECOVISION & Project Defense',
+    subtitle: 'Poster Evaluation & Jury Scrutiny'
+  },
+  {
+    src: 'assets/gallery/gallery-10.jpg',
+    alt: 'Students defending their environmental research paper in front of faculty jury',
+    title: 'Green Tech & SDG Research',
+    subtitle: 'Carbon Footprint & Eco-Resilient Planning'
+  },
+  {
+    src: 'assets/gallery/gallery-24.jpg',
+    alt: 'Student presenting research on methods for estimating evaporation in front of PCCOE Civil SDG Cell banner',
+    title: 'Hydrology & Evaporation Analysis',
+    subtitle: 'SDG Cell & Water Resources Research Defense'
+  },
+  {
+    src: 'assets/gallery/gallery-27.jpg',
+    alt: 'Tug-of-war anchor and team straining against rope on red clay sports ground with cheering crowd',
+    title: 'Tug-of-War Anchor & Power Pull',
+    subtitle: 'Annual Sports & Civil Spirit on Red Clay'
+  },
+  {
+    src: 'assets/gallery/gallery-28.jpg',
+    alt: 'Civil engineering students in synchronized pull during tug of war contest with dust kicking up from the red clay pitch',
+    title: 'Tug-of-War Turf Battle',
+    subtitle: 'Red Clay Grit, Dust & Team Camaraderie'
+  },
+  {
+    src: 'assets/gallery/gallery-20.jpg',
+    alt: 'Evaluation committee and student teams celebrating with event mementos in front of scoring board',
+    title: 'Scrutiny & Evaluation Committee',
+    subtitle: 'Round Scoring & Memento Distribution'
+  },
+  {
+    src: 'assets/gallery/gallery-12.jpg',
+    alt: 'Audience of professors, participants, and students applauding in the PCCOE conference hall',
+    title: 'Valedictory & Plenary Session',
+    subtitle: 'PCCOE Auditorium & Conference Hall'
+  },
+  {
+    src: 'assets/gallery/gallery-13.jpg',
+    alt: 'Distinguished faculty member delivering address from the podium to the student assembly',
+    title: 'Presidential Address & Remarks',
+    subtitle: 'CiESA Annual Symposium Assembly'
+  },
+  {
+    src: 'assets/gallery/gallery-14.jpg',
+    alt: 'Winning student participants receiving achievement certificates from faculty on PCCOE stage',
+    title: 'Prize Distribution & Felicitation',
+    subtitle: 'Celebrating Winners & Excellence'
+  },
+  {
+    src: 'assets/gallery/gallery-15.jpg',
+    alt: 'Grand group photograph of the complete CiESA student organizing committee on PCCOE auditorium stage',
+    title: 'CiESA Organizing Secretariat',
+    subtitle: 'The Architects of Sthapatya 2026–27'
+  },
+  {
+    src: 'assets/gallery/gallery-19.jpg',
+    alt: 'Grand group photo of faculty members, jury, student organizers, and participants in the PCCOE conference hall',
+    title: 'Sthapatya Grand Symposium Conclave',
+    subtitle: 'Department of Civil Engineering & CiESA'
+  }
+];
+
+function renderGalleryCarousel() {
+  const container = document.getElementById('flex-carousel-root');
+  if (!container || !window.FlexCarousel) return;
+
+  if (window.galleryCarousel) {
+    window.galleryCarousel.wake();
+    return;
+  }
+
+  window.galleryCarousel = new window.FlexCarousel(container, {
+    items: GALLERY_ITEMS,
+    preset: 'liquid',
+    intro: 'rise',
+    cardHeight: 0.52,
+    gap: 16,
+    radius: 14,
+    fit: 'natural',
+    tilt: 58,
+    bend: 0.36,
+    squeeze: 0.22,
+    focusOnClick: true,
+    autoplay: true,
+    interval: 4.5,
+    captions: true,
+    captureWheel: true
+  });
+}
+
+
+
+// ═══════════════════════════════════════
 // RENDER HERO DEPTH TEXT (React Bits)
 // ═══════════════════════════════════════
 
@@ -544,65 +773,80 @@ function renderHeroDepthText() {
   new window.DepthText(container, {
     text: 'STHAPATYA',
     html: 'STHAPAT<span class="thin">Y</span>A',
-    layers: 34,
-    depth: 2.4,
+    layers: 12,
+    depth: 2.2,
     faceColor: '#f8fafc',
     depthColor: '#7c3aed',
-    tilt: 7.5,
+    tilt: 9,
     pointerTracking: true,
-    smoothing: 0.14,
-    perspective: 900,
+    smoothing: 0.12,
+    perspective: 850,
     autoOrbit: true,
-    orbitSpeed: 0.35,
-    fontSize: 'clamp(2.1rem, 9vw, 5.2rem)',
+    orbitSpeed: 0.38,
+    fontSize: 'clamp(2.4rem, 7.5vw, 5.2rem)',
     fontWeight: 900,
     shadow: true
   });
 }
 
 // ═══════════════════════════════════════
-// HERO STRUCTURE 3D INTERACTIVE TILT
+// HERO STRUCTURE 3D INTERACTIVE TILT (Synchronized with Hero)
 // ═══════════════════════════════════════
 
 function initHeroStructureTilt() {
-  const visual = document.querySelector('.hero-visual');
+  const hero = document.getElementById('hero');
   const structure = document.querySelector('.hero-structure');
-  if (!visual || !structure) return;
+  if (!hero || !structure) return;
 
   let currentX = 0, currentY = 0;
   let targetX = 0, targetY = 0;
+  let isHovered = false;
+  let rafId = null;
 
   const onMove = (clientX, clientY) => {
-    const rect = structure.getBoundingClientRect();
+    const rect = hero.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
+    isHovered = true;
     const x = (clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
     const y = (clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-    targetX = -Math.max(-1, Math.min(1, y)) * 10;
-    targetY = Math.max(-1, Math.min(1, x)) * 12;
+    targetX = -Math.max(-1, Math.min(1, y)) * 11;
+    targetY = Math.max(-1, Math.min(1, x)) * 13;
+    startLoop();
   };
-
-  visual.addEventListener('pointermove', e => onMove(e.clientX, e.clientY), { passive: true });
-  visual.addEventListener('touchmove', e => {
-    if (e.touches && e.touches.length > 0) {
-      onMove(e.touches[0].clientX, e.touches[0].clientY);
-    }
-  }, { passive: true });
 
   const onEnd = () => {
+    isHovered = false;
     targetX = 0;
     targetY = 0;
+    startLoop();
   };
 
-  visual.addEventListener('pointerleave', onEnd);
-  visual.addEventListener('touchend', onEnd);
+  hero.addEventListener('pointermove', e => onMove(e.clientX, e.clientY), { passive: true });
+  hero.addEventListener('pointerleave', onEnd);
+  window.addEventListener('blur', onEnd);
+
+  const startLoop = () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(loop);
+  };
 
   const loop = () => {
-    currentX += (targetX - currentX) * 0.1;
-    currentY += (targetY - currentY) * 0.1;
+    const dx = targetX - currentX;
+    const dy = targetY - currentY;
+    currentX += dx * 0.1;
+    currentY += dy * 0.1;
     structure.style.transform = `perspective(900px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
-    requestAnimationFrame(loop);
+
+    // Only continue animation loop while moving or hovered; sleep when settled
+    if (Math.abs(dx) > 0.02 || Math.abs(dy) > 0.02 || isHovered) {
+      rafId = requestAnimationFrame(loop);
+    } else {
+      currentX = targetX;
+      currentY = targetY;
+      structure.style.transform = `perspective(900px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+      rafId = null;
+    }
   };
-  loop();
 }
 
 
@@ -616,6 +860,25 @@ const panel = document.getElementById('modal-panel');
 function showModal(id) {
   const ev = EVENTS.find(e => e.id === id);
   if (!ev) return;
+
+  let stagesHTML = '';
+  if (ev.stages) {
+    stagesHTML = `
+      <div class="m-section m-section--stages">
+        <div class="m-sec-title">🏆 Event Structure (${ev.stages.length} Stages)</div>
+        <div class="m-stages-grid">
+          ${ev.stages.map((st, sIdx) => `
+            <div class="m-stage-card">
+              <div class="m-stage-header">
+                <span class="m-stage-badge">${st.stage}</span>
+                <span class="m-stage-tag">${st.badge || (sIdx === 0 ? 'Digital Submission' : 'Campus Presentation')}</span>
+              </div>
+              <p class="m-stage-desc">${st.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }
 
   let schedHTML = '';
   if (ev.scheduleDays) {
@@ -667,6 +930,7 @@ function showModal(id) {
     </div>
     <div class="m-body">
       <div class="m-section"><div class="m-sec-title">📌 Description</div><p>${ev.fullDesc}</p></div>
+      ${stagesHTML}
       <div class="m-section"><div class="m-sec-title">🎯 Objective</div><p>${ev.objective}</p></div>
       ${schedHTML}
       ${roundsHTML}
