@@ -300,6 +300,11 @@ const EVENTS = [
 // ═══════════════════════════════════════
 
 window.addEventListener('DOMContentLoaded', () => {
+  if ('scrollRestoration' in history && !location.hash) {
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  }
+
   const splash = document.getElementById('splash');
   const site = document.getElementById('site-wrap');
 
@@ -509,7 +514,7 @@ function renderAccordionGallery() {
     stagger: 0.06,
     grayscale: true,
     showLabels: true,
-    autoPlay: true,
+    autoPlay: false,
     autoPlayInterval: 4800,
     onSelect: item => {
       if (item && item.id) {

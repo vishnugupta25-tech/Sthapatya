@@ -33,7 +33,7 @@
       this.trigger = options.trigger || 'hover';
       this.showLabels = options.showLabels !== undefined ? options.showLabels : true;
       this.grayscale = options.grayscale !== undefined ? options.grayscale : true;
-      this.autoPlay = options.autoPlay !== undefined ? options.autoPlay : true;
+      this.autoPlay = options.autoPlay !== undefined ? options.autoPlay : false;
       this.autoPlayInterval = options.autoPlayInterval || 4500;
       this.onSelect = options.onSelect || null;
       this.onRegister = options.onRegister || null;
@@ -52,6 +52,7 @@
       this.firstRun = true;
       this.isPlaying = this.autoPlay;
       this.isHovered = false;
+      this.isInView = false;
       this.tourTimer = null;
       this.progressAnim = null;
 
@@ -517,6 +518,22 @@
         window.addEventListener('resize', measure);
       }
 
+      if (window.IntersectionObserver) {
+        this.inViewObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            this.isInView = entry.isIntersecting;
+            if (!this.isInView) {
+              this.pauseAutoTour();
+            } else if (this.isPlaying && !this.isHovered) {
+              this.startAutoTour();
+            }
+          });
+        }, { threshold: 0.1 });
+        this.inViewObserver.observe(this.root);
+      } else {
+        this.isInView = true;
+      }
+
       measure();
     }
 
@@ -530,11 +547,19 @@
         if (curr) curr.textContent = String(this.active + 1).padStart(2, '0');
       }
 
-      // Update Toolbar Pills
+      // Update Toolbar Pills (scroll ONLY the horizontal pills container, never the window!)
       this.pillEls.forEach((pill, i) => {
         if (i === this.active) {
           pill.classList.add('is-active');
-          pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          if (this.pillsContainer) {
+            const pillLeft = pill.offsetLeft;
+            const pillWidth = pill.offsetWidth;
+            const containerWidth = this.pillsContainer.clientWidth;
+            this.pillsContainer.scrollTo({
+              left: pillLeft - containerWidth / 2 + pillWidth / 2,
+              behavior: 'smooth'
+            });
+          }
         } else {
           pill.classList.remove('is-active');
         }
@@ -577,12 +602,13 @@
     startAutoTour() {
       this.pauseAutoTour();
       if (!this.isPlaying) return;
+      if (window.IntersectionObserver && !this.isInView) return;
 
       const dur = this.autoPlayInterval;
       const startTime = Date.now();
 
       const updateProgress = () => {
-        if (!this.isPlaying || this.isHovered) return;
+        if (!this.isPlaying || this.isHovered || (window.IntersectionObserver && !this.isInView)) return;
         const elapsed = Date.now() - startTime;
         const pct = Math.min(100, (elapsed / dur) * 100);
         if (this.progressFill) {
@@ -723,6 +749,7 @@
     destroy() {
       if (this.currentTl) this.currentTl.kill();
       if (this.resizeObserver) this.resizeObserver.disconnect();
+      if (this.inViewObserver) this.inViewObserver.disconnect();
       this.pauseAutoTour();
     }
   }
