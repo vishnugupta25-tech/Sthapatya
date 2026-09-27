@@ -569,13 +569,23 @@ ul, ol { list-style: none; }
   50% { opacity: 0.3; }
 }
 
-.hero h1 {
+.hero h1,
+.hero-title-wrap {
   font-family: var(--font-display);
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -2px;
   margin-bottom: 8px;
+  overflow: visible;
+}
+
+.hero-depth-target {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+  line-height: 0.92;
 }
 
 .hero h1 .thin {

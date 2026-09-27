@@ -344,6 +344,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   renderCards();
   renderAccordionGallery();
+  renderHeroDepthText();
   initReveal();
   checkHash();
 });
@@ -436,75 +437,69 @@ function renderCards() {
       </div>
     `;
 
-    el.addEventListener('click', () => showModal(ev.id));
-    el.addEventListener('keydown', e => { if (e.key === 'Enter') showModal(ev.id); });
+    el.addEventListener('click', () => {
+      if (window.eventsAccordion) window.eventsAccordion.setActiveById(ev.id);
+      showModal(ev.id);
+    });
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        if (window.eventsAccordion) window.eventsAccordion.setActiveById(ev.id);
+        showModal(ev.id);
+      }
+    });
     grid.appendChild(el);
   });
 }
 
 
 // ═══════════════════════════════════════
-// RENDER ACCORDION GALLERY (React Bits)
+// RENDER ACCORDION GALLERY (React Bits + Interactive CAD Suite)
 // ═══════════════════════════════════════
 
 function renderAccordionGallery() {
   const container = document.getElementById('events-accordion-gallery');
   if (!container || !window.AccordionGallery) return;
 
-  const galleryItems = [
-    {
-      id: 'the-site-investigation',
-      label: '🔎 The Site Investigation',
-      image: 'assets/events/site-investigation.jpg',
-      alt: 'The Site Investigation — Fieldwork & Geotechnical Inspection',
-      link: '#the-site-investigation'
-    },
-    {
-      id: '3d-showdown',
-      label: '🖨️ 3-D Showdown',
-      image: 'assets/events/3d-showdown.jpg',
-      alt: '3-D Showdown — Structural Scale Model 3D Printing Challenge',
-      link: '#3d-showdown'
-    },
-    {
-      id: 'cadnova',
-      label: '🛠️ CADNOVA 2026',
-      image: 'assets/events/cadnova.jpg',
-      alt: 'CADNOVA 2026 — AutoCAD Drafting & BIM Design Challenge',
-      link: '#cadnova'
-    },
-    {
-      id: 'structural-showdown',
-      label: '🏗️ Structural Showdown',
-      image: 'assets/events/structural-showdown.jpg',
-      alt: 'Structural Showdown — Truss Fabrication & Hydraulic Load Testing',
-      link: '#structural-showdown'
-    },
-    {
-      id: 'beyond-the-benchmark',
-      label: '🧭 Beyond The Benchmark',
-      image: 'assets/events/beyond-the-benchmark.jpg',
-      alt: 'Beyond The Benchmark — Advanced Total Station & Field Surveying Challenge',
-      link: '#beyond-the-benchmark'
-    },
-    {
-      id: 'ecovision',
-      label: '🌱 ECOVISION 2026',
-      image: 'assets/events/ecovision.jpg',
-      alt: 'ECOVISION 2026 — Sustainable Green Infrastructure & Smart Cities Challenge',
-      link: '#ecovision'
-    }
-  ];
+  const imageMap = {
+    'the-site-investigation': 'assets/events/site-investigation.jpg',
+    '3d-showdown': 'assets/events/3d-showdown.jpg',
+    'cadnova': 'assets/events/cadnova.jpg',
+    'structural-showdown': 'assets/events/structural-showdown.jpg',
+    'beyond-the-benchmark': 'assets/events/beyond-the-benchmark.jpg',
+    'ecovision': 'assets/events/ecovision.jpg'
+  };
 
-  new window.AccordionGallery(container, {
+  const galleryItems = EVENTS.map((ev, i) => ({
+    id: ev.id,
+    label: `${ev.icon} ${ev.title}`,
+    title: ev.title,
+    icon: ev.icon,
+    subtitle: ev.subtitle,
+    tagline: ev.tagline,
+    category: ev.category,
+    catColor: ev.catColor,
+    prize: ev.prize,
+    teamSize: ev.teamSize,
+    date: ev.date,
+    venue: ev.venue,
+    feePCCOE: ev.feePCCOE,
+    feeOther: ev.feeOther,
+    shortDesc: ev.shortDesc,
+    formLink: ev.formLink,
+    image: imageMap[ev.id] || 'assets/events/cadnova.jpg',
+    alt: `${ev.title} — ${ev.subtitle}`,
+    link: `#${ev.id}`
+  }));
+
+  window.eventsAccordion = new window.AccordionGallery(container, {
     items: galleryItems,
     defaultIndex: 2,
-    expandRatio: 0.52,
+    expandRatio: 0.54,
     trigger: 'hover',
     accentColor: '#e8a020',
     overlayColor: '#08090c',
     textColor: '#ffffff',
-    height: 420,
+    height: 450,
     gap: 12,
     radius: 16,
     duration: 0.6,
@@ -514,11 +509,48 @@ function renderAccordionGallery() {
     stagger: 0.06,
     grayscale: true,
     showLabels: true,
+    autoPlay: true,
+    autoPlayInterval: 4800,
     onSelect: item => {
       if (item && item.id) {
         showModal(item.id);
       }
+    },
+    onRegister: item => {
+      if (item && item.formLink) {
+        window.open(item.formLink, '_blank', 'noopener,noreferrer');
+      } else if (item && item.id) {
+        showModal(item.id);
+      }
     }
+  });
+}
+
+
+// ═══════════════════════════════════════
+// RENDER HERO DEPTH TEXT (React Bits)
+// ═══════════════════════════════════════
+
+function renderHeroDepthText() {
+  const container = document.getElementById('hero-depth-text');
+  if (!container || !window.DepthText) return;
+
+  new window.DepthText(container, {
+    text: 'STHAPATYA',
+    html: 'STHAPAT<span class="thin">Y</span>A',
+    layers: 34,
+    depth: 2.4,
+    faceColor: '#f8fafc',
+    depthColor: '#7c3aed',
+    tilt: 7.5,
+    pointerTracking: true,
+    smoothing: 0.14,
+    perspective: 900,
+    autoOrbit: true,
+    orbitSpeed: 0.35,
+    fontSize: 'clamp(2.8rem, 6.2vw, 5.4rem)',
+    fontWeight: 900,
+    shadow: true
   });
 }
 
