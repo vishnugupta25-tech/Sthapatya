@@ -55,6 +55,29 @@
         this.mouse.active = false;
       }, { passive: true });
 
+      // Mobile touch screen tracking
+      window.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          this.mouse.x = e.touches[0].clientX;
+          this.mouse.y = e.touches[0].clientY;
+          this.mouse.active = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          this.mouse.x = e.touches[0].clientX;
+          this.mouse.y = e.touches[0].clientY;
+          this.mouse.active = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        setTimeout(() => {
+          this.mouse.active = false;
+        }, 800);
+      }, { passive: true });
+
       // Pause rendering when tab is hidden to conserve battery
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {

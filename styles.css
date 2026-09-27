@@ -2086,57 +2086,128 @@ section { padding: 100px 48px; }
 .reveal-d6 { transition-delay: 0.48s; }
 
 /* ═══════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE & MOBILE INTERACTIVITY
    ═══════════════════════════════════════ */
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 120px 24px 60px;
-    text-align: left;
+    padding: 105px 20px 50px;
+    text-align: center;
+    gap: 32px;
   }
 
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 520px;
+  }
+
+  .hero-meta {
+    justify-content: center;
+    gap: 12px 20px;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  /* Keep Hero Visual & Structural V visible and centered on mobile! */
   .hero-visual {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .hero-structure {
+    max-width: 320px;
+    width: 100%;
+    aspect-ratio: 1;
   }
 
   .countdown-box {
-    position: static;
+    position: relative;
+    bottom: auto;
+    left: auto;
     transform: none;
-    margin-top: 40px;
+    margin: 20px auto 0;
     min-width: auto;
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
+    padding: 14px 18px;
+    background: rgba(14, 17, 24, 0.92);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   }
 
-  section { padding: 70px 24px; }
+  section { padding: 60px 20px; }
 
   .about-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .events-grid { grid-template-columns: 1fr; }
 
-  .nav { padding: 0 20px; }
+  .nav { padding: 0 16px; }
 
-  .footer { padding: 40px 24px 20px; }
+  .footer { padding: 40px 20px 20px; }
 }
 
 @media (max-width: 768px) {
+  /* Streamline CAD spec top strip on phone */
+  .cad-strip {
+    padding: 0 14px;
+    font-size: 0.58rem;
+  }
+
+  .cad-strip-left span:not(.cad-badge) {
+    display: none;
+  }
+
+  .cad-strip-right span:not(:last-child):not(.cad-ig-link) {
+    display: none;
+  }
+
   .nav-menu {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(8, 9, 12, 0.97);
+    background: rgba(8, 9, 12, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 22px;
     z-index: 998;
   }
 
   .nav-menu.open { display: flex; }
 
-  .nav-menu a { font-size: 1.1rem; }
-  .nav-menu .nav-social-link { font-size: 1rem !important; padding: 10px 20px !important; }
+  .nav-menu a {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-menu .nav-social-link {
+    font-size: 1rem !important;
+    padding: 12px 24px !important;
+    border-radius: 999px;
+    background: rgba(232, 160, 32, 0.12);
+    border: 1px solid var(--amber);
+  }
 
   .nav-toggle { display: flex; z-index: 999; }
 
@@ -2148,20 +2219,39 @@ section { padding: 100px 48px; }
   .m-facts { padding: 16px 20px; grid-template-columns: 1fr 1fr; }
 
   .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .ev-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ev-card:active {
+    transform: scale(0.985);
+    border-color: var(--amber);
+  }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.6rem; }
-  .hero-meta { gap: 18px; }
+  .hero {
+    padding: 95px 16px 40px;
+  }
 
-  .cd-val { font-size: 1.3rem; min-width: 42px; }
+  .hero h1 { font-size: 2.3rem; }
+  .hero-meta { gap: 10px 16px; }
+
+  .hero-structure {
+    max-width: 290px;
+  }
+
+  .cd-val { font-size: 1.25rem; min-width: 40px; padding: 5px 6px; }
   .cd-units { gap: 4px; }
+  .cd-label { font-size: 0.5rem; }
 
-  .hero-actions { flex-direction: column; width: 100%; }
-  .btn-fill, .btn-outline { width: 100%; justify-content: center; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
+  .btn-fill, .btn-outline { width: 100%; justify-content: center; padding: 12px 20px; }
 
   .m-facts { grid-template-columns: 1fr; }
 
-  .stat-block { padding: 18px 16px; }
-  .stat-block .num { font-size: 1.4rem; }
+  .stat-block { padding: 16px 14px; }
+  .stat-block .num { font-size: 1.35rem; }
 }

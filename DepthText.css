@@ -77,4 +77,17 @@
 .hero-depth-target {
   display: inline-block;
   vertical-align: middle;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .depth-text {
+    max-width: 100%;
+    touch-action: pan-y;
+  }
+  .depth-text__layer,
+  .depth-text__face {
+    font-size: clamp(2.2rem, 10.5vw, 3.4rem) !important;
+    letter-spacing: -0.025em;
+  }
 }

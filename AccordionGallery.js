@@ -230,8 +230,9 @@
         const numPill = `<span class="ag-peek__num">${String(i + 1).padStart(2, '0')}</span>`;
         const peekLabel = item.shortTitle || item.title || item.label || `Event ${i + 1}`;
         const peekText = `<span class="ag-peek__center">${item.icon || '⌖'} ${peekLabel}</span>`;
+        const prizeTag = item.prize ? `<span class="ag-peek__prize">${item.prize}</span>` : '';
         const dot = `<span class="ag-peek__dot" style="--pill-color:${catCol};"></span>`;
-        peek.innerHTML = `${numPill}${peekText}${dot}`;
+        peek.innerHTML = `${numPill}${peekText}${prizeTag}${dot}`;
         panel.appendChild(peek);
 
         // Rich Active Overlay Card
@@ -436,14 +437,16 @@
         }
       });
 
-      // Touch / Swipe Navigation Support
+      // Touch / Swipe Navigation Support (Multi-directional for Mobile)
       let touchStartX = 0;
       let touchStartY = 0;
+      let touchStartTime = 0;
 
       this.root.addEventListener('touchstart', e => {
         if (e.touches.length > 0) {
           touchStartX = e.touches[0].clientX;
           touchStartY = e.touches[0].clientY;
+          touchStartTime = Date.now();
           this.pauseAutoTour();
         }
       }, { passive: true });
@@ -454,13 +457,25 @@
           const touchEndY = e.changedTouches[0].clientY;
           const deltaX = touchEndX - touchStartX;
           const deltaY = touchEndY - touchStartY;
+          const elapsed = Date.now() - touchStartTime;
 
-          // Horizontal swipe detected
-          if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4) {
-            if (deltaX < 0) {
-              this.next(true); // Swiped left -> next
-            } else {
-              this.prev(true); // Swiped right -> prev
+          // Quick swipe gesture (< 450ms)
+          if (elapsed < 450) {
+            // Horizontal swipe (left or right)
+            if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+              if (deltaX < 0) {
+                this.next(true); // Swiped left -> next
+              } else {
+                this.prev(true); // Swiped right -> prev
+              }
+            }
+            // Vertical swipe inside gallery (up or down on mobile vertical stack)
+            else if (Math.abs(deltaY) > 45 && Math.abs(deltaY) > Math.abs(deltaX) * 1.4) {
+              if (deltaY < 0) {
+                this.next(true); // Swiped up -> next
+              } else {
+                this.prev(true); // Swiped down -> prev
+              }
             }
           }
         }

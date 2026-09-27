@@ -352,6 +352,7 @@ window.addEventListener('DOMContentLoaded', () => {
   renderCards();
   renderAccordionGallery();
   renderHeroDepthText();
+  initHeroStructureTilt();
   initReveal();
   checkHash();
 });
@@ -555,10 +556,55 @@ function renderHeroDepthText() {
     perspective: 900,
     autoOrbit: true,
     orbitSpeed: 0.35,
-    fontSize: 'clamp(2.8rem, 6.2vw, 5.4rem)',
+    fontSize: 'clamp(2.1rem, 9vw, 5.2rem)',
     fontWeight: 900,
     shadow: true
   });
+}
+
+// ═══════════════════════════════════════
+// HERO STRUCTURE 3D INTERACTIVE TILT
+// ═══════════════════════════════════════
+
+function initHeroStructureTilt() {
+  const visual = document.querySelector('.hero-visual');
+  const structure = document.querySelector('.hero-structure');
+  if (!visual || !structure) return;
+
+  let currentX = 0, currentY = 0;
+  let targetX = 0, targetY = 0;
+
+  const onMove = (clientX, clientY) => {
+    const rect = structure.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const x = (clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+    const y = (clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+    targetX = -Math.max(-1, Math.min(1, y)) * 10;
+    targetY = Math.max(-1, Math.min(1, x)) * 12;
+  };
+
+  visual.addEventListener('pointermove', e => onMove(e.clientX, e.clientY), { passive: true });
+  visual.addEventListener('touchmove', e => {
+    if (e.touches && e.touches.length > 0) {
+      onMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  const onEnd = () => {
+    targetX = 0;
+    targetY = 0;
+  };
+
+  visual.addEventListener('pointerleave', onEnd);
+  visual.addEventListener('touchend', onEnd);
+
+  const loop = () => {
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
+    structure.style.transform = `perspective(900px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+    requestAnimationFrame(loop);
+  };
+  loop();
 }
 
 

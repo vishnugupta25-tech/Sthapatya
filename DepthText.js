@@ -105,8 +105,6 @@
 
     initEvents() {
       const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
-      const finePointer = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches ?? true;
-      const canTrackPointer = this.pointerTracking && finePointer && !reducedMotion;
 
       const applyTransform = () => {
         if (this.stage) {
@@ -121,17 +119,27 @@
         return;
       }
 
-      const handlePointerMove = event => {
+      const updateCoordinates = (clientX, clientY) => {
         if (!this.root) return;
         const rect = this.root.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
 
         this.activePointer = true;
-        const x = clamp((event.clientX - (rect.left + rect.width / 2)) / (rect.width * 0.8), -1, 1);
-        const y = clamp((event.clientY - (rect.top + rect.height / 2)) / (rect.height * 0.8), -1, 1);
+        const x = clamp((clientX - (rect.left + rect.width / 2)) / (rect.width * 0.8), -1.2, 1.2);
+        const y = clamp((clientY - (rect.top + rect.height / 2)) / (rect.height * 0.8), -1.2, 1.2);
 
-        this.target.x = this.baseRotation.x - y * this.safeTilt;
-        this.target.y = this.baseRotation.y + x * this.safeTilt;
+        this.target.x = this.baseRotation.x - y * this.safeTilt * 1.2;
+        this.target.y = this.baseRotation.y + x * this.safeTilt * 1.2;
+      };
+
+      const handlePointerMove = event => {
+        updateCoordinates(event.clientX, event.clientY);
+      };
+
+      const handleTouchMove = event => {
+        if (event.touches && event.touches.length > 0) {
+          updateCoordinates(event.touches[0].clientX, event.touches[0].clientY);
+        }
       };
 
       const handlePointerLeave = () => {
@@ -140,18 +148,43 @@
         this.target.y = this.baseRotation.y;
       };
 
-      if (canTrackPointer) {
+      // Gyroscope tilt on mobile phones
+      const handleOrientation = event => {
+        if (this.activePointer) return; // Touch takes precedence
+        if (event.gamma !== null && event.beta !== null) {
+          const tiltX = clamp((event.beta - 40) / 30, -1, 1); // Normal holding angle ~40deg
+          const tiltY = clamp(event.gamma / 30, -1, 1);
+          this.target.x = this.baseRotation.x - tiltX * this.safeTilt * 0.6;
+          this.target.y = this.baseRotation.y + tiltY * this.safeTilt * 0.6;
+        }
+      };
+
+      if (this.pointerTracking) {
         window.addEventListener('pointermove', handlePointerMove, { passive: true });
         window.addEventListener('pointerleave', handlePointerLeave, { passive: true });
         window.addEventListener('blur', handlePointerLeave);
+
+        // Mobile touch interaction
+        this.root.addEventListener('touchstart', handleTouchMove, { passive: true });
+        this.root.addEventListener('touchmove', handleTouchMove, { passive: true });
+        this.root.addEventListener('touchend', handlePointerLeave, { passive: true });
+
+        // Mobile gyro tilt
+        if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== 'function') {
+          window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+        }
       }
 
       this._cleanupEvents = () => {
-        if (canTrackPointer) {
-          window.removeEventListener('pointermove', handlePointerMove);
-          window.removeEventListener('pointerleave', handlePointerLeave);
-          window.removeEventListener('blur', handlePointerLeave);
+        window.removeEventListener('pointermove', handlePointerMove);
+        window.removeEventListener('pointerleave', handlePointerLeave);
+        window.removeEventListener('blur', handlePointerLeave);
+        if (this.root) {
+          this.root.removeEventListener('touchstart', handleTouchMove);
+          this.root.removeEventListener('touchmove', handleTouchMove);
+          this.root.removeEventListener('touchend', handlePointerLeave);
         }
+        window.removeEventListener('deviceorientation', handleOrientation);
       };
 
       const tick = now => {
