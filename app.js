@@ -525,9 +525,7 @@ function renderAccordionGallery() {
       }
     },
     onRegister: item => {
-      if (item && item.formLink) {
-        window.open(item.formLink, '_blank', 'noopener,noreferrer');
-      } else if (item && item.id) {
+      if (item && item.id) {
         showModal(item.id);
       }
     }
@@ -643,7 +641,10 @@ function showModal(id) {
   }
 
   const regBtn = ev.formLink
-    ? `<a href="${ev.formLink}" target="_blank" rel="noopener" class="m-register">Register Now →</a>`
+    ? `<div class="m-slide-commit-wrap">
+         <div id="modal-slide-commit" class="modal-slide-box"></div>
+         <span class="m-slide-commit-hint">⚡ Swipe handle fully to register</span>
+       </div>`
     : `<div class="m-register" style="opacity:0.5;cursor:default;">Registration Link Coming Soon</div>`;
 
   panel.innerHTML = `
@@ -684,6 +685,40 @@ function showModal(id) {
       </div>
       ${regBtn}
     </div>`;
+
+  // Initialize React Bits SlideCommit inside modal
+  if (ev.formLink && window.SlideCommit) {
+    const slideBox = document.getElementById('modal-slide-commit');
+    if (slideBox) {
+      new window.SlideCommit(slideBox, {
+        label: 'Register Now',
+        doneLabel: 'Opening Form...',
+        errorLabel: 'Once Again',
+        trackColor: '#12151c',
+        handleColor: ev.accent || '#e8a020',
+        successColor: '#22c55e',
+        dangerColor: '#e5484d',
+        width: 320,
+        height: 56,
+        radius: 28,
+        speed: 50,
+        returnBounce: 0.38,
+        landingDip: 0.026,
+        holdMs: 1500,
+        onConfirm: () => {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              window.open(ev.formLink, '_blank', 'noopener,noreferrer');
+            }, 400);
+          });
+        },
+        onDone: () => {
+          console.log(`Registered: ${ev.title}`);
+        }
+      });
+    }
+  }
 
   bg.classList.add('open');
   document.body.style.overflow = 'hidden';

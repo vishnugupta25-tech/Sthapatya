@@ -1564,7 +1564,33 @@ section { padding: 100px 48px; }
 
 .coord .c-phone:hover { color: var(--amber); }
 
-/* Register CTA */
+/* Register CTA — SlideCommit Interactive Integration */
+.m-slide-commit-wrap {
+  margin-top: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-slide-box {
+  width: 100%;
+  max-width: 380px;
+}
+
+.m-slide-commit-hint {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  color: var(--gray-3, #94a3b8);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .m-register {
   display: block;
   width: 100%;
