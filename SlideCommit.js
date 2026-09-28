@@ -287,13 +287,20 @@
           window.removeEventListener('pointercancel', onPointerUp);
 
           const travel = this.getTravel();
-          if (this.x >= travel * 0.96) {
+          if (this.x >= travel * 0.7) {
             this.commit();
           } else if (g.moved) {
             const v = velocityOf(g.hist);
-            this.goHome(v);
+            if (v > 100) {
+              this.commit();
+            } else {
+              this.goHome(v);
+            }
           } else {
-            this.goHome(0);
+            // Mobile Tap: Animate smoothly to end and commit!
+            this.x = travel;
+            this.updateVisuals();
+            this.commit();
           }
         };
 
@@ -303,6 +310,16 @@
       };
 
       this.trackRef.addEventListener('pointerdown', onPointerDown);
+
+      // Support direct click / tap for mobile accessibility
+      this.root.addEventListener('click', e => {
+        if (this.disabled || this.phase === 'pending' || this.phase === 'done') return;
+        if (this.phase === 'idle') {
+          this.x = this.getTravel();
+          this.updateVisuals();
+          this.commit();
+        }
+      });
 
       this.capsuleRef.addEventListener('pointerenter', e => {
         if (e.pointerType === 'mouse') {

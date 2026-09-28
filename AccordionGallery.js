@@ -208,7 +208,8 @@
         img.src = item.image;
         img.alt = item.alt || item.label || item.title || '';
         img.draggable = false;
-        img.loading = 'eager';
+        img.loading = 'lazy';
+        img.decoding = 'async';
         media.appendChild(img);
 
         const overlay = document.createElement('span');

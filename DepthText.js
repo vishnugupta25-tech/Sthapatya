@@ -208,8 +208,11 @@
           if (inView && !this.frameId) {
             this.startTime = performance.now();
             this.frameId = requestAnimationFrame(tick);
+          } else if (!inView && this.frameId) {
+            cancelAnimationFrame(this.frameId);
+            this.frameId = 0;
           }
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 });
         this._observer.observe(this.root);
       }
 

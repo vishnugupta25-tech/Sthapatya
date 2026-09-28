@@ -1353,7 +1353,14 @@ void main() {
       resizeObserver.observe(container);
       const intersectionObserver = new IntersectionObserver(([entry]) => {
         this.visible = entry.isIntersecting;
-        start();
+        if (this.visible) {
+          start();
+        } else {
+          if (raf) {
+            cancelAnimationFrame(raf);
+            raf = 0;
+          }
+        }
       });
       intersectionObserver.observe(container);
 

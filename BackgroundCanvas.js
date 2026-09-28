@@ -78,23 +78,41 @@
         }, 800);
       }, { passive: true });
 
-      // Pause rendering when tab is hidden or scrolled out of hero view
+      this.lastFrameTime = 0;
+      this.targetFpsInterval = 1000 / 36; // 36 FPS target for silky-smooth background without burning GPU/CPU
+
+      // Pause rendering when tab is hidden
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           this.stop();
-        } else if (window.scrollY <= window.innerHeight * 1.6) {
+        } else if (this.inView) {
           this.start();
         }
       });
 
-      window.addEventListener('scroll', () => {
-        const scrolledFar = window.scrollY > window.innerHeight * 1.6;
-        if (scrolledFar && this.isRunning) {
-          this.stop();
-        } else if (!scrolledFar && !this.isRunning && !document.hidden) {
-          this.start();
-        }
-      }, { passive: true });
+      // Strict IntersectionObserver: only run canvas when #hero is in view
+      this.inView = true;
+      const heroEl = document.getElementById('hero');
+      if (window.IntersectionObserver && heroEl) {
+        this.heroObserver = new IntersectionObserver(([entry]) => {
+          this.inView = entry.isIntersecting;
+          if (this.inView && !document.hidden) {
+            this.start();
+          } else {
+            this.stop();
+          }
+        }, { threshold: 0.05 });
+        this.heroObserver.observe(heroEl);
+      } else {
+        window.addEventListener('scroll', () => {
+          const scrolledFar = window.scrollY > window.innerHeight * 1.2;
+          if (scrolledFar && this.isRunning) {
+            this.stop();
+          } else if (!scrolledFar && !this.isRunning && !document.hidden) {
+            this.start();
+          }
+        }, { passive: true });
+      }
 
       this.createNodes();
       this.start();
@@ -103,12 +121,13 @@
     resize() {
       this.width = window.innerWidth;
       this.height = window.innerHeight;
+      this.dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       this.canvas.width = this.width * this.dpr;
       this.canvas.height = this.height * this.dpr;
-      this.ctx.scale(this.dpr, this.dpr);
+      this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
 
       // Re-adjust node count on significant resize
-      const targetCount = this.width < 768 ? 16 : 30;
+      const targetCount = this.width < 768 ? 8 : 16;
       if (this.nodes.length !== targetCount) {
         this.createNodes();
       }
@@ -116,20 +135,20 @@
 
     createNodes() {
       const isMobile = this.width < 768;
-      const count = isMobile ? 16 : 30;
+      const count = isMobile ? 8 : 16;
       this.nodes = [];
 
       for (let i = 0; i < count; i++) {
         const colorBase = this.colors[Math.floor(Math.random() * this.colors.length)];
-        const hasLabel = i % (isMobile ? 8 : 5) === 0;
+        const hasLabel = i % (isMobile ? 6 : 4) === 0;
         const label = hasLabel ? this.sampleLabels[i % this.sampleLabels.length] : null;
 
         this.nodes.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
-          baseRadius: Math.random() * 1.8 + 1.2,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          baseRadius: Math.random() * 1.6 + 1.2,
           radius: 1.5,
           colorBase: colorBase,
           label: label,
@@ -143,7 +162,8 @@
     start() {
       if (!this.isRunning) {
         this.isRunning = true;
-        this.loop();
+        this.lastFrameTime = performance.now();
+        this.loop(this.lastFrameTime);
       }
     }
 
@@ -151,20 +171,27 @@
       this.isRunning = false;
       if (this.animId) {
         cancelAnimationFrame(this.animId);
+        this.animId = null;
       }
     }
 
-    loop() {
+    loop(timestamp) {
       if (!this.isRunning) return;
+      this.animId = requestAnimationFrame(t => this.loop(t));
+
+      // Frame rate throttling for optimal battery & performance
+      const elapsed = timestamp - this.lastFrameTime;
+      if (elapsed < this.targetFpsInterval) return;
+      this.lastFrameTime = timestamp - (elapsed % this.targetFpsInterval);
+
       this.render();
-      this.animId = requestAnimationFrame(() => this.loop());
     }
 
     render() {
       this.ctx.clearRect(0, 0, this.width, this.height);
 
-      const maxConnectDist = this.width < 768 ? 95 : 135;
-      const maxMouseDist = 180;
+      const maxConnectDist = this.width < 768 ? 100 : 140;
+      const maxMouseDist = 160;
       const nodesLen = this.nodes.length;
 
       // 1. Update and draw nodes
@@ -184,15 +211,15 @@
         // Subtle pulsing size
         n.pulse += n.pulseSpeed;
         const pulseFactor = Math.sin(n.pulse);
-        n.radius = n.baseRadius + pulseFactor * 0.6;
+        n.radius = n.baseRadius + pulseFactor * 0.5;
 
         // Mouse gentle repulsion/drift
         if (this.mouse.active) {
           const dx = n.x - this.mouse.x;
           const dy = n.y - this.mouse.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 120 && dist > 0) {
-            const force = (120 - dist) / 120 * 0.4;
+          if (dist < 110 && dist > 0) {
+            const force = (110 - dist) / 110 * 0.35;
             n.x += (dx / dist) * force;
             n.y += (dy / dist) * force;
           }
@@ -214,10 +241,10 @@
 
           // Tiny tick lines
           this.ctx.beginPath();
-          this.ctx.moveTo(n.x - n.radius - 6, n.y);
-          this.ctx.lineTo(n.x + n.radius + 6, n.y);
-          this.ctx.moveTo(n.x, n.y - n.radius - 6);
-          this.ctx.lineTo(n.x, n.y + n.radius + 6);
+          this.ctx.moveTo(n.x - n.radius - 5, n.y);
+          this.ctx.lineTo(n.x + n.radius + 5, n.y);
+          this.ctx.moveTo(n.x, n.y - n.radius - 5);
+          this.ctx.lineTo(n.x, n.y + n.radius + 5);
           this.ctx.stroke();
         }
 
@@ -229,7 +256,7 @@
         }
       }
 
-      // 2. Draw Civil Structural Truss Lines between nearby nodes
+      // 2. Draw Civil Structural Truss Lines between nearby nodes (Clean O(N^2) pairwise)
       for (let i = 0; i < nodesLen; i++) {
         const nA = this.nodes[i];
 
@@ -247,26 +274,6 @@
             this.ctx.strokeStyle = `rgba(232, 160, 32, ${alpha})`;
             this.ctx.lineWidth = 0.85;
             this.ctx.stroke();
-
-            // Structural triangulation mesh fill for very close nodes
-            for (let k = j + 1; k < nodesLen; k++) {
-              const nC = this.nodes[k];
-              const dAC = Math.hypot(nA.x - nC.x, nA.y - nC.y);
-              const dBC = Math.hypot(nB.x - nC.x, nB.y - nC.y);
-
-              if (dAC < maxConnectDist * 0.75 && dBC < maxConnectDist * 0.75) {
-                const triAlpha = (1 - (dist + dAC + dBC) / (maxConnectDist * 2.5)) * 0.04;
-                if (triAlpha > 0) {
-                  this.ctx.beginPath();
-                  this.ctx.moveTo(nA.x, nA.y);
-                  this.ctx.lineTo(nB.x, nB.y);
-                  this.ctx.lineTo(nC.x, nC.y);
-                  this.ctx.closePath();
-                  this.ctx.fillStyle = `rgba(56, 189, 248, ${triAlpha})`;
-                  this.ctx.fill();
-                }
-              }
-            }
           }
         }
 

@@ -312,7 +312,8 @@ const EVENTS = [
 
 
 // ═══════════════════════════════════════
-// SPLASH — auto dismiss after 3 seconds
+// ═══════════════════════════════════════
+// SPLASH — Fast dismiss & instant layout
 // ═══════════════════════════════════════
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -325,6 +326,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const splash = document.getElementById('splash');
   const site = document.getElementById('site-wrap');
+  const skipBtn = document.getElementById('splash-skip');
 
   // Initialize React Bits ParticleText on intro screen
   const introEl = document.getElementById('intro-particle-text');
@@ -333,42 +335,68 @@ window.addEventListener('DOMContentLoaded', () => {
     particleInstance = new window.ParticleText(introEl, {
       text: 'STHAPATYA',
       particleSize: 2,
-      density: 4,
+      density: window.innerWidth < 768 ? 2 : 4,
       color: '#ffffff',
       highlightColor: '#8b5cf6',
-      scatter: 180,
-      gatherDuration: 1600,
-      stagger: 420,
+      scatter: 160,
+      gatherDuration: 1200,
+      stagger: 300,
       pointerRepel: 40,
       repelRadius: 120,
-      idleDrift: 0.7,
+      idleDrift: 0.6,
       trigger: 'hover',
-      fontSize: 'clamp(3rem, 12vw, 8rem)',
+      fontSize: 'clamp(2.8rem, 11vw, 7.5rem)',
       fontWeight: 800,
       fontFamily: 'inherit',
       glow: true
     });
   }
 
-  // Dismiss splash after intro plays (~3.2s)
-  setTimeout(() => {
+  let splashDismissed = false;
+  const dismissSplash = () => {
+    if (splashDismissed) return;
+    splashDismissed = true;
+
     if (splash) {
       splash.classList.add('done');
-      site.style.display = 'block';
+      if (site) site.classList.add('show');
+
+      // Wake up WebGL and 3D carousels smoothly
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          site.classList.add('show');
-          if (window.galleryCarousel) window.galleryCarousel.wake();
-        });
+        if (window.galleryCarousel) window.galleryCarousel.wake();
+        if (window.eventsAccordion && typeof window.eventsAccordion.applyLayout === 'function') {
+          window.eventsAccordion.applyLayout(false);
+        }
       });
+
       setTimeout(() => {
         if (particleInstance) particleInstance.destroy();
         splash.remove();
         if (window.galleryCarousel) window.galleryCarousel.wake();
-      }, 1000);
+      }, 700);
     }
-  }, 3200);
+  };
 
+  // 1. User clicks "Skip Intro"
+  if (skipBtn) {
+    skipBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      dismissSplash();
+    });
+  }
+
+  // 2. User presses Escape or Enter or scrolls / taps
+  const onQuickDismiss = () => dismissSplash();
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' || e.key === 'Enter') dismissSplash();
+  }, { once: true });
+  window.addEventListener('wheel', onQuickDismiss, { passive: true, once: true });
+  window.addEventListener('touchmove', onQuickDismiss, { passive: true, once: true });
+
+  // 3. Fast auto-dismiss after intro gather (~1.5s instead of 3.2s delay)
+  setTimeout(dismissSplash, 1500);
+
+  // Initialize components immediately so geometry is measured accurately
   renderCards();
   renderAccordionGallery();
   renderGalleryCarousel();
@@ -392,10 +420,13 @@ function tick() {
   const m = Math.floor((diff % 36e5) / 6e4);
   const s = Math.floor((diff % 6e4) / 1e3);
   const pad = n => String(n).padStart(2, '0');
-  document.getElementById('cd-d').textContent = pad(d);
-  document.getElementById('cd-h').textContent = pad(h);
-  document.getElementById('cd-m').textContent = pad(m);
-  document.getElementById('cd-s').textContent = pad(s);
+  const dEl = document.getElementById('cd-d');
+  if (dEl) {
+    dEl.textContent = pad(d);
+    document.getElementById('cd-h').textContent = pad(h);
+    document.getElementById('cd-m').textContent = pad(m);
+    document.getElementById('cd-s').textContent = pad(s);
+  }
 }
 
 tick();
@@ -403,27 +434,38 @@ setInterval(tick, 1000);
 
 
 // ═══════════════════════════════════════
-// NAVBAR
+// NAVBAR (Throttled Scroll)
 // ═══════════════════════════════════════
 
+let navScrollTicking = false;
+const navElement = document.getElementById('nav');
+
 window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', scrollY > 50);
-});
+  if (!navScrollTicking) {
+    requestAnimationFrame(() => {
+      if (navElement) navElement.classList.toggle('scrolled', window.scrollY > 40);
+      navScrollTicking = false;
+    });
+    navScrollTicking = true;
+  }
+}, { passive: true });
 
 const toggle = document.getElementById('nav-toggle');
 const menu = document.getElementById('nav-menu');
 
-toggle.addEventListener('click', () => {
-  toggle.classList.toggle('on');
-  menu.classList.toggle('open');
-});
-
-menu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    toggle.classList.remove('on');
-    menu.classList.remove('open');
+if (toggle && menu) {
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('on');
+    menu.classList.toggle('open');
   });
-});
+
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('on');
+      menu.classList.remove('open');
+    });
+  });
+}
 
 
 // ═══════════════════════════════════════
@@ -544,12 +586,12 @@ function renderAccordionGallery() {
     autoPlayInterval: 4800,
     onSelect: item => {
       if (item && item.id) {
-        showModal(item.id);
+        showModal(item.id, false);
       }
     },
     onRegister: item => {
       if (item && item.id) {
-        showModal(item.id);
+        showModal(item.id, true);
       }
     }
   });
@@ -770,19 +812,21 @@ function renderHeroDepthText() {
   const container = document.getElementById('hero-depth-text');
   if (!container || !window.DepthText) return;
 
+  const isMobile = window.innerWidth < 768;
+
   new window.DepthText(container, {
     text: 'STHAPATYA',
     html: 'STHAPAT<span class="thin">Y</span>A',
-    layers: 12,
+    layers: isMobile ? 6 : 10,
     depth: 2.2,
     faceColor: '#f8fafc',
     depthColor: '#7c3aed',
-    tilt: 9,
+    tilt: isMobile ? 6 : 9,
     pointerTracking: true,
     smoothing: 0.12,
     perspective: 850,
     autoOrbit: true,
-    orbitSpeed: 0.38,
+    orbitSpeed: isMobile ? 0.25 : 0.38,
     fontSize: 'clamp(2.4rem, 7.5vw, 5.2rem)',
     fontWeight: 900,
     shadow: true
@@ -857,7 +901,7 @@ function initHeroStructureTilt() {
 const bg = document.getElementById('modal-bg');
 const panel = document.getElementById('modal-panel');
 
-function showModal(id) {
+function showModal(id, focusRegister = false) {
   const ev = EVENTS.find(e => e.id === id);
   if (!ev) return;
 
@@ -904,9 +948,42 @@ function showModal(id) {
   }
 
   const regBtn = ev.formLink
-    ? `<div class="m-slide-commit-wrap">
-         <div id="modal-slide-commit" class="modal-slide-box"></div>
-         <span class="m-slide-commit-hint">⚡ Swipe handle fully to register</span>
+    ? `<div class="m-registration-hub" id="modal-reg-hub">
+         <div class="m-reg-hub-header">
+           <div class="m-reg-hub-badge">OFFICIAL REGISTRATION PORTAL</div>
+           <div class="m-reg-hub-status">● Live & Accepting Submissions</div>
+         </div>
+
+         <!-- Primary Direct 1-Tap CTA: Native <a> is 100% UNBLOCKABLE on iOS Safari & All Mobile Browsers -->
+         <a href="${ev.formLink}" target="_blank" rel="noopener noreferrer" class="m-direct-reg-btn" id="m-direct-reg-btn" aria-label="Open official registration form for ${ev.title}">
+           <div class="m-reg-btn-left">
+             <span class="m-reg-btn-bolt">⚡</span>
+             <div class="m-reg-btn-text-group">
+               <span class="m-reg-btn-title">Register for ${ev.title}</span>
+               <span class="m-reg-btn-subtitle">Direct Google Form · Instant Submission · Free for PCCOE</span>
+             </div>
+           </div>
+           <span class="m-reg-btn-arrow">↗</span>
+         </a>
+
+         <div class="m-reg-divider">
+           <span>OR SWIPE / TAP SLIDER</span>
+         </div>
+
+         <!-- Interactive SlideCommit Slider with Tap & Swipe Support -->
+         <div class="m-slide-commit-wrap">
+           <div id="modal-slide-commit" class="modal-slide-box"></div>
+           <span class="m-slide-commit-hint">⚡ Tap or slide handle to register</span>
+         </div>
+
+         <!-- Fallback direct link for iOS / In-App Browsers -->
+         <div class="m-reg-fallback-wrap">
+           <span class="m-fallback-icon">📱</span>
+           <span class="m-fallback-label">iOS / WhatsApp / Instagram user?</span>
+           <a href="${ev.formLink}" target="_blank" rel="noopener noreferrer" class="m-fallback-link">
+             Tap here to open link directly ↗
+           </a>
+         </div>
        </div>`
     : `<div class="m-register" style="opacity:0.5;cursor:default;">Registration Link Coming Soon</div>`;
 
@@ -956,26 +1033,31 @@ function showModal(id) {
     if (slideBox) {
       new window.SlideCommit(slideBox, {
         label: 'Register Now',
-        doneLabel: 'Opening Form...',
-        errorLabel: 'Once Again',
+        doneLabel: 'Form Opened! ↗',
+        errorLabel: 'Tap to Retry',
         trackColor: '#12151c',
         handleColor: ev.accent || '#e8a020',
         successColor: '#22c55e',
         dangerColor: '#e5484d',
-        width: 320,
+        width: '100%',
         height: 56,
         radius: 28,
         speed: 50,
         returnBounce: 0.38,
         landingDip: 0.026,
-        holdMs: 1500,
+        holdMs: 2000,
         onConfirm: () => {
-          return new Promise(resolve => {
-            setTimeout(() => {
-              resolve();
-              window.open(ev.formLink, '_blank', 'noopener,noreferrer');
-            }, 400);
-          });
+          // Open SYNCHRONOUSLY within the gesture event so iOS Safari doesn't block it!
+          try {
+            const newWindow = window.open(ev.formLink, '_blank', 'noopener,noreferrer');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+              // Popup blocked by iOS Safari / browser setting -> redirect directly
+              window.location.href = ev.formLink;
+            }
+          } catch (e) {
+            window.location.href = ev.formLink;
+          }
+          return Promise.resolve();
         },
         onDone: () => {
           console.log(`Registered: ${ev.title}`);
@@ -988,6 +1070,16 @@ function showModal(id) {
   document.body.style.overflow = 'hidden';
   document.getElementById('m-close').addEventListener('click', hideModal);
   history.pushState(null, '', `#${ev.id}`);
+
+  if (focusRegister) {
+    setTimeout(() => {
+      const regBtnEl = document.getElementById('m-direct-reg-btn');
+      if (regBtnEl) {
+        regBtnEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        regBtnEl.classList.add('pulse-focus');
+      }
+    }, 180);
+  }
 }
 
 function hideModal() {

@@ -17,6 +17,8 @@
   font-family: inherit;
   width: 100%;
   max-width: 100%;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .slide-commit[data-disabled] {

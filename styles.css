@@ -190,13 +190,40 @@ ul, ol { list-style: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Skip Intro button on splash */
+.splash-skip {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: rgba(232, 160, 32, 0.08);
+  border: 1px solid rgba(232, 160, 32, 0.35);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.splash-skip:hover {
+  background: var(--amber);
+  color: #08090c;
+  box-shadow: 0 0 20px rgba(232, 160, 32, 0.4);
+}
+
 /* ═══════════════════════════════════════
    STRUCTURAL BACKGROUND ELEMENTS
    ═══════════════════════════════════════ */
 .site-wrap {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
 
 .site-wrap.show {
@@ -222,7 +249,8 @@ ul, ol { list-style: none; }
   border-radius: 50%;
   opacity: 0.65;
   pointer-events: none;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .aurora-amber {
@@ -253,21 +281,30 @@ ul, ol { list-style: none; }
 }
 
 @keyframes auroraDrift1 {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.55; }
-  50% { transform: translate(-70px, 60px) scale(1.12); opacity: 0.7; }
-  100% { transform: translate(-110px, 20px) scale(0.95); opacity: 0.5; }
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(-70px, 60px, 0) scale(1.12); opacity: 0.7; }
+  100% { transform: translate3d(-110px, 20px, 0) scale(0.95); opacity: 0.5; }
 }
 
 @keyframes auroraDrift2 {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.45; }
-  50% { transform: translate(80px, -50px) scale(1.15); opacity: 0.65; }
-  100% { transform: translate(50px, 70px) scale(1); opacity: 0.45; }
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.45; }
+  50% { transform: translate3d(80px, -50px, 0) scale(1.15); opacity: 0.65; }
+  100% { transform: translate3d(50px, 70px, 0) scale(1); opacity: 0.45; }
 }
 
 @keyframes auroraDrift3 {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-  50% { transform: translate(-60px, -70px) scale(1.2); opacity: 0.6; }
-  100% { transform: translate(40px, -30px) scale(1); opacity: 0.4; }
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate3d(-60px, -70px, 0) scale(1.2); opacity: 0.6; }
+  100% { transform: translate3d(40px, -30px, 0) scale(1); opacity: 0.4; }
+}
+
+/* Mobile GPU optimization: disable expensive radial gradient drifting */
+@media (max-width: 768px) {
+  .bg-aurora-orb {
+    animation: none !important;
+    opacity: 0.38 !important;
+    will-change: auto !important;
+  }
 }
 
 /* 2. Precision CAD Drafting Grid with Crosshairs */
@@ -1375,7 +1412,10 @@ section { padding: 100px 48px; }
   max-width: 700px;
   width: 100%;
   max-height: 88vh;
+  max-height: 88dvh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   transform: translateY(24px) scale(0.97);
   transition: transform 0.45s var(--ease);
 }
@@ -1639,9 +1679,159 @@ section { padding: 100px 48px; }
 
 .coord .c-phone:hover { color: var(--amber); }
 
-/* Register CTA — SlideCommit Interactive Integration */
+/* ═══════════════════════════════════════
+   REGISTRATION HUB (Multi-Platform / iOS-Safe)
+   ═══════════════════════════════════════ */
+.m-registration-hub {
+  margin-top: 36px;
+  background: rgba(18, 22, 32, 0.85);
+  border: 1px solid rgba(232, 160, 32, 0.28);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.m-registration-hub::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--cyan), var(--amber));
+}
+
+.m-reg-hub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.m-reg-hub-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.m-reg-hub-status {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Primary Direct 1-Tap CTA Button (Native <a> for 100% iOS Safari compatibility) */
+.m-direct-reg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #e8a020 0%, #d4912a 50%, #c46d3c 100%);
+  color: #08090c !important;
+  border-radius: 8px;
+  font-family: var(--font-display, sans-serif);
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(232, 160, 32, 0.35);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s ease, filter 0.2s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.m-direct-reg-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(232, 160, 32, 0.5);
+  filter: brightness(1.05);
+}
+
+.m-direct-reg-btn:active {
+  transform: translateY(1px);
+  filter: brightness(0.95);
+}
+
+.m-reg-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.m-reg-btn-bolt {
+  font-size: 1.4rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.m-reg-btn-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.m-reg-btn-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #08090c;
+}
+
+.m-reg-btn-subtitle {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(8, 9, 12, 0.85);
+  font-family: var(--font-body, sans-serif);
+  margin-top: 1px;
+}
+
+.m-reg-btn-arrow {
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-left: 12px;
+  transition: transform 0.25s ease;
+  color: #08090c;
+}
+
+.m-direct-reg-btn:hover .m-reg-btn-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Divider */
+.m-reg-divider {
+  display: flex;
+  align-items: center;
+  margin: 18px 0 14px;
+  text-align: center;
+  color: var(--gray-3, #5c584f);
+}
+
+.m-reg-divider::before,
+.m-reg-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.m-reg-divider span {
+  padding: 0 12px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--gray-2, #8a8478);
+  text-transform: uppercase;
+}
+
+/* SlideCommit Box inside Registration Hub */
 .m-slide-commit-wrap {
-  margin-top: 32px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1664,6 +1854,39 @@ section { padding: 100px 48px; }
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+/* iOS Safari In-App Browser Fallback Strip */
+.m-reg-fallback-wrap {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: var(--gray-2, #8a8478);
+}
+
+.m-fallback-icon {
+  font-size: 0.85rem;
+}
+
+.m-fallback-link {
+  color: var(--cyan, #4ecdc4) !important;
+  font-weight: 600;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+  word-break: break-all;
+}
+
+.m-fallback-link:hover {
+  color: var(--amber, #e8a020) !important;
 }
 
 .m-register {
@@ -2316,8 +2539,32 @@ section { padding: 100px 48px; }
   .nav-toggle.on span:nth-child(2) { opacity: 0; }
   .nav-toggle.on span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
-  .m-head, .m-body { padding-left: 20px; padding-right: 20px; }
-  .m-facts { padding: 16px 20px; grid-template-columns: 1fr 1fr; }
+  .m-head, .m-body { padding-left: 18px; padding-right: 18px; }
+  .m-facts { padding: 14px 18px; grid-template-columns: 1fr 1fr; }
+
+  .modal-bg {
+    padding: 10px 8px;
+    align-items: flex-end;
+  }
+
+  .modal-panel {
+    max-height: 92vh;
+    max-height: 92dvh;
+    border-radius: 16px 16px 10px 10px;
+  }
+
+  .m-registration-hub {
+    padding: 18px 14px;
+    margin-top: 24px;
+  }
+
+  .m-direct-reg-btn {
+    padding: 14px 16px;
+  }
+
+  .m-reg-btn-title {
+    font-size: 0.95rem;
+  }
 
   .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
 
