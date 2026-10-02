@@ -113,16 +113,72 @@ const EVENTS = [
     id: "cadnova",
     icon: "🛠️",
     title: "CADNOVA 2026",
-    subtitle: "2-Day AutoCAD Drafting & Design Challenge",
+    subtitle: "Complete Building Design & AutoCAD Challenge",
     tagline: "Think. Draft. Engineer. Build the Future.",
-    theme: "The Transition of Civil Engineering.",
+    theme: "Develop a complete building design from the given problem statement, ensuring functional planning and standard compliance.",
     category: "AutoCAD Design",
     catColor: "#38bdf8",
     accent: "linear-gradient(135deg, #38bdf8, #0284c7)",
     iconBg: "rgba(56,189,248,0.1)",
-    shortDesc: "Put your AutoCAD speed and precision to the test with random problem statements and NBC compliance.",
-    fullDesc: "CADNOVA 2026 is an intensive 2-day drafting and design challenge where participants are assigned real-time civil problem statements. Draft floor plans, elevations, and cross-sections adhering strictly to NBC/FSI bye-laws, then integrate electrical and plumbing/sanitary building services with correct ISO/IS colour coding.",
-    objective: "Design compliant, accurate, and professional civil engineering drawings with proper layer hierarchy, dimensional precision, and service integration.",
+    shortDesc: "Develop a complete building design from the given problem statement: functional planning, wall dimensions, elevation, plumbing, electrical, FSI & NBC/ISO compliance.",
+    fullDesc: "CADNOVA 2026 is an intensive 2-day computer-aided drafting and architectural engineering challenge. Participants develop a complete building design from the given problem statement, ensuring functional space planning, structural rationality, and rigorous standard compliance across architectural layouts, MEP services, and statutory bye-laws.",
+    objective: "Develop a complete building design from the given problem statement, ensuring functional planning and standard compliance.",
+    day1Scope: [
+      {
+        num: "01",
+        icon: "📐",
+        title: "Problem Statement Analysis & Space Planning",
+        desc: "Site zoning, functional requirements, circulation flow, orientation, and optimum space allocation."
+      },
+      {
+        num: "02",
+        icon: "🧱",
+        title: "Complete Floor Plan with Wall Dimensions",
+        desc: "Exterior (230mm) and interior (115mm) masonry, room clear dimensions, column grid, and axis lines."
+      },
+      {
+        num: "03",
+        icon: "🏛️",
+        title: "Elevation with Major Architectural Details",
+        desc: "Front and side elevations, plinth, lintel, chhajja projections, floor-to-floor heights, and parapet."
+      },
+      {
+        num: "04",
+        icon: "🚰",
+        title: "Plumbing Layout & Service Connections",
+        desc: "Water supply network, overhead tank, soil/waste stacks, inspection chambers, and municipal sewer link."
+      },
+      {
+        num: "05",
+        icon: "⚡",
+        title: "Electrical Layout with Required Points",
+        desc: "Lighting, ceiling fans, 6A/16A power outlets, AC conduits, main distribution board (DB), and circuit routing."
+      },
+      {
+        num: "06",
+        icon: "📊",
+        title: "FSI Calculation & Built-Up Area Analysis",
+        desc: "Plot area, permissible FSI, built-up area (BUA), carpet area, ground coverage, and setback compliance."
+      },
+      {
+        num: "07",
+        icon: "📝",
+        title: "Construction Notes & Material Specifications",
+        desc: "RCC M25/Fe500 specs, mortar mix ratios, damp-proofing (DPC), exterior/interior plaster, and waterproofing."
+      },
+      {
+        num: "08",
+        icon: "🚪",
+        title: "Opening Schedule for Doors, Windows & Ventilators",
+        desc: "Standard notation (D1, D2, W1, V1), clear frame dimensions, sill and lintel heights, and materials."
+      },
+      {
+        num: "09",
+        icon: "📜",
+        title: "Design Verification as per Relevant NBC & ISO Standards",
+        desc: "Strict compliance with NBC 2016 Part 3 (General Building Requirements) and ISO drafting standards."
+      }
+    ],
     teamSize: "Solo / Max 2",
     duration: "2-Day Challenge",
     feePCCOE: "FREE",
@@ -132,23 +188,26 @@ const EVENTS = [
     lastDate: "7th Oct 2026",
     venue: "Lab 9406L, PCCOE",
     rules: [
-      "Solo or duo participation (max 2 members).",
-      "All drafting on designated lab systems during allotted slots.",
-      "Drawings must adhere to NBC guidelines, FSI restrictions, and municipal bye-laws.",
-      "Day 2 requires ISO/IS standard line weights and color coding for utilities."
+      "Solo or duo participation (max 2 members per team).",
+      "Develop a complete building design from the given problem statement, ensuring functional planning and standard compliance.",
+      "Day 1 Mandatory Deliverables: Space planning analysis, fully dimensioned floor plan, elevations, plumbing layout with service connections, electrical layout with required points, FSI calculation & built-up area analysis, construction notes & material specifications, opening schedule, and design verification against NBC & ISO standards.",
+      "Drawings must adhere strictly to National Building Code (NBC 2016) guidelines, FSI restrictions, and municipal bye-laws.",
+      "All drafting must use proper CAD layer hierarchies, ISO standard line weights, and designated color coding for services.",
+      "All CAD drafting to be carried out on designated lab systems during official challenge hours."
     ],
     scheduleDays: {
-      day1: "Planning · AutoCAD · Plan/Elevation/Section · NBC/FSI Compliance · Scrutiny",
-      day2: "Electrical Layout · Plumbing/Sanitary · ISO/IS Colour Coding · Final Submission · Results"
+      day1: "Day 1 Core Deliverables: Problem Statement Analysis & Space Planning · Complete Floor Plan with Wall Dimensions · Elevation with Major Architectural Details · Plumbing Layout & Service Connections · Electrical Layout with Required Points · FSI Calculation & Built-Up Area Analysis · Construction Notes & Material Specifications · Opening Schedule for Doors, Windows & Ventilators · Design Verification as per Relevant NBC & ISO Standards",
+      day2: "Detailed Cross-Sections & Structural Framing · Services Riser Diagrams & ISO Layer Audit · Final Drawing Sheet Composition · Technical Scrutiny & Jury Evaluation"
     },
     materials: [
-      "Desktop workstations with licensed AutoCAD.",
-      "Problem statement sheets and scratch paper provided."
+      "Desktop workstations equipped with licensed AutoCAD / CAD suite.",
+      "Standard CAD template with pre-configured ISO title blocks, standard layers, and dimension styles.",
+      "Problem statement specification sheets, bye-law guidelines, and scratch sheets."
     ],
     notes: [
-      "Day 1: Planning, Drafting, NBC/FSI Compliance, Scrutiny",
-      "Day 2: Electrical, Plumbing, ISO Coding, Results",
-      "Evaluation: Accuracy · Compliance · Drafting Quality · Presentation"
+      "Day 1 Deliverables: Space Planning, Floor Plan, Elevation, Plumbing, Electrical, FSI Analysis, Specs, Opening Schedule, NBC Verification",
+      "Day 2: Cross-Sections, Final Drawing Sheet Assembly, Jury Presentation & Results",
+      "Evaluation Matrix: Functional Space Planning (25%) · NBC & Municipal Bye-laws Compliance (25%) · Plumbing & Electrical Integration (20%) · Drafting Precision & ISO Layers (20%) · Presentation & Notes (10%)"
     ],
     coordinators: [
       { name: "Vrushank Shirsath", phone: "+91 8888909419", tel: "tel:+918888909419" },
@@ -498,6 +557,7 @@ function renderCards() {
         <p class="card-excerpt">${ev.shortDesc}</p>
         <div class="card-chips">
           ${ev.stages ? `<span class="chip chip--stages" style="border-color:${ev.catColor}60;color:${ev.catColor};"><span class="chip-ico">🏆</span>2 Stages</span>` : ''}
+          ${ev.day1Scope ? `<span class="chip chip--day1" style="border-color:${ev.catColor}60;color:${ev.catColor};"><span class="chip-ico">📐</span>9 Deliverables</span>` : ''}
           <span class="chip"><span class="chip-ico">👥</span>${ev.teamSize}</span>
           <span class="chip"><span class="chip-ico">⏱️</span>${ev.duration}</span>
           <span class="chip"><span class="chip-ico">💰</span>PCCOE: ${ev.feePCCOE}</span>
@@ -924,6 +984,31 @@ function showModal(id, focusRegister = false) {
       </div>`;
   }
 
+  let day1ScopeHTML = '';
+  if (ev.day1Scope) {
+    day1ScopeHTML = `
+      <div class="m-section m-section--day1">
+        <div class="m-day1-header">
+          <div class="m-day1-badge">DAY 1 CORE DELIVERABLES</div>
+          <div class="m-day1-standards-badge">NBC 2016 · ISO COMPLIANT</div>
+        </div>
+        <div class="m-sec-title">📐 Day 1 Scope & Technical Deliverables (${ev.day1Scope.length} Modules)</div>
+        <p class="m-day1-lead">Develop a complete building design from the given problem statement, ensuring functional planning and standard compliance:</p>
+        <div class="m-day1-grid">
+          ${ev.day1Scope.map(item => `
+            <div class="m-day1-card">
+              <div class="m-day1-card-head">
+                <span class="m-day1-num">#${item.num}</span>
+                <span class="m-day1-icon">${item.icon}</span>
+              </div>
+              <h4 class="m-day1-title">${item.title}</h4>
+              <p class="m-day1-desc">${item.desc}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }
+
   let schedHTML = '';
   if (ev.scheduleDays) {
     schedHTML = `
@@ -1008,6 +1093,7 @@ function showModal(id, focusRegister = false) {
     <div class="m-body">
       <div class="m-section"><div class="m-sec-title">📌 Description</div><p>${ev.fullDesc}</p></div>
       ${stagesHTML}
+      ${day1ScopeHTML}
       <div class="m-section"><div class="m-sec-title">🎯 Objective</div><p>${ev.objective}</p></div>
       ${schedHTML}
       ${roundsHTML}

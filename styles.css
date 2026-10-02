@@ -1648,6 +1648,133 @@ section { padding: 100px 48px; }
   font-weight: 600;
 }
 
+.chip--day1 {
+  background: rgba(56, 189, 248, 0.12) !important;
+  font-weight: 600;
+}
+
+/* ── Modal Event Day 1 Scope (CADNOVA 9 Core Deliverables) ── */
+.m-section--day1 {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.07) 0%, rgba(2, 132, 199, 0.03) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.m-section--day1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #38bdf8, #0284c7);
+}
+
+.m-day1-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.m-day1-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.16);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+}
+
+.m-day1-standards-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  background: rgba(232, 160, 32, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(232, 160, 32, 0.35);
+}
+
+.m-day1-lead {
+  font-size: 0.9rem !important;
+  color: #f1f5f9 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 16px !important;
+  font-weight: 500;
+}
+
+.m-day1-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.m-day1-card {
+  background: rgba(10, 14, 22, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.m-day1-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.18);
+}
+
+.m-day1-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.m-day1-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.06em;
+}
+
+.m-day1-icon {
+  font-size: 1.2rem;
+}
+
+.m-day1-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.m-day1-desc {
+  font-size: 0.8rem !important;
+  color: #94a3b8 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
 /* Coordinator cards */
 .coord-row {
   display: flex;
@@ -2565,6 +2692,9 @@ section { padding: 100px 48px; }
   .m-reg-btn-title {
     font-size: 0.95rem;
   }
+
+  .m-section--day1 { padding: 18px 16px; }
+  .m-day1-grid { grid-template-columns: 1fr; }
 
   .stats-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
 

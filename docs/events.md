@@ -83,22 +83,40 @@
 
 ---
 
-## 3. 🛠️ CADNOVA 2026 — The Transition of Civil Engineering
+## 3. 🛠️ CADNOVA 2026 — Complete Building Design & AutoCAD Challenge
 - **Slug:** `cadnova`
 - **Title:** CADNOVA 2026
-- **Subtitle / Type:** 2-Day AutoCAD Drafting & Design Challenge
+- **Subtitle / Type:** 2-Day AutoCAD Drafting & Building Design Challenge
 - **Tagline:** *"Think. Draft. Engineer. Build the Future."*
-- **Theme Slogan:** *"The Transition of Civil Engineering — Get a random civil problem → Draft → Design → Add Services → Submit & Compete!"*
+- **Theme Slogan:** *"Develop a complete building design from the given problem statement, ensuring functional planning and standard compliance."*
 - **Category:** Computer-Aided Drafting & Architectural Engineering
-- **Short Description:** Put your AutoCAD speed and precision to the test with random problem statements, municipal bye-laws, and service integrations.
-- **Full Description:** CADNOVA 2026 is an intensive 2-day drafting and design challenge where participants are assigned real-time civil problem statements. Teams must draft floor plans, elevations, and cross-sections adhering strictly to NBC/FSI bye-laws, and subsequently integrate electrical and plumbing/sanitary building services.
-- **Objective:** Design compliant, accurate, and professional civil engineering drawings with proper layer hierarchy, dimensional precision, and service integration.
+- **Short Description:** Develop a complete building design from the given problem statement: functional planning, wall dimensions, elevation, plumbing, electrical, FSI & NBC/ISO compliance.
+- **Full Description:** CADNOVA 2026 is an intensive 2-day computer-aided drafting and architectural engineering challenge. Participants develop a complete building design from the given problem statement, ensuring functional space planning, structural rationality, and rigorous standard compliance across architectural layouts, MEP services, and statutory bye-laws.
+- **Objective:** Develop a complete building design from the given problem statement, ensuring functional planning and standard compliance.
 - **Team Size:** Solo allowed | Maximum 2 members
 - **Duration:** 2-Day Challenge (9th & 10th October 2026)
-- **Schedule Breakdown:**
-  - **Day 1:** Planning • AutoCAD • Plan/Elevation/Section • NBC/FSI/Bye-laws Compliance • Scrutiny
-  - **Day 2:** Electrical Layout • Plumbing/Sanitary Services • ISO/IS Colour Coding • Final Submission • Results
-- **Evaluation Criteria:** Accuracy • Regulatory Compliance (NBC/FSI) • Drafting Quality • Layer Organization • Presentation
+- **Schedule Breakdown & Technical Scope:**
+  - **Day 1: Complete Building Design Formulation (Core Scope):**
+    1. **Problem statement analysis & space planning:** Site zoning, functional requirements, circulation flow, orientation (sun/wind aspect), and optimum space allocation.
+    2. **Complete floor plan with wall dimensions:** Exterior load-bearing/framed walls (230 mm), interior partitions (115 mm), room clear dimensions, column grid, and axis lines.
+    3. **Elevation with major architectural details:** Front & side elevations, plinth (+600mm to +900mm), lintel (+2100mm), floor-to-floor height (min 3000mm), chhajja sunshades (450–600mm), and parapet (1000mm).
+    4. **Plumbing layout and service connections:** Dual-pipe soil/waste drainage network, traps with water seals, inspection chambers, invert levels, self-cleansing slope (1:40/1:60), OHT, and municipal water/sewer connections.
+    5. **Electrical layout with required points:** Lighting points, ceiling fans, 6A convenience sockets, 16A power outlets (geysers/AC), main distribution board (DB), conduit routing, and circuit protection.
+    6. **FSI calculation and built-up area analysis:** Plot area, permissible vs consumed FSI, Ground Coverage %, Gross Built-Up Area (BUA), Carpet Area (RERA compliant), and front/rear/side setbacks.
+    7. **Construction notes and material specifications:** RCC framed structure specs (M25 concrete, Fe500 TMT steel), brick masonry mortar ratios (1:4 interior, 1:6 exterior), plinth DPC, plastering, and terrace waterproofing.
+    8. **Opening schedule for doors, windows & ventilators:** Tabulated schedule (D1, D2, D3, W1, W2, V1), clear frame dimensions, sill & lintel levels, shutter types, and material specifications.
+    9. **Design verification as per relevant NBC and ISO standards:** Strict verification against National Building Code (NBC 2016 Part 3: General Building Requirements, Part 4: Fire & Life Safety, Part 8: Building Services, Part 9: Plumbing Services) and ISO drafting conventions (ISO 128 / IS 962).
+  - **Day 2: Structural Detailing, Cross-Sections & Final Submission:**
+    - Detailed cross-sections through staircase and sanitary blocks
+    - 3D architectural / isometric projection
+    - Layer audit & ISO line weight / color coding verification
+    - Technical scrutiny, jury defense, final CAD submission & results
+- **Evaluation Criteria & Weightage:**
+  - **Functional Space Planning & Circulation:** 25%
+  - **NBC 2016 & Municipal Bye-laws Compliance:** 25%
+  - **MEP Service Integration (Plumbing & Electrical):** 20%
+  - **CAD Drafting Precision, Layer Hierarchy & ISO Standards:** 20%
+  - **Construction Notes, Opening Schedule & Presentation:** 10%
 - **Registration Fee:**
   - **PCCOE Students:** FREE
   - **Students from Other Colleges:** ₹150 per team
@@ -108,13 +126,16 @@
 - **Venue:** PCCOE, Nigdi – Lab 9406L
 - **Rules & Regulations:**
   1. Teams can participate solo or as a duo (max 2 members).
-  2. All drafting must be completed on designated lab systems using standard CAD software during allotted slots.
-  3. Drawings must adhere strictly to National Building Code (NBC) guidelines, FSI restrictions, and local municipal bye-laws.
-  4. Day 2 requires correct ISO/IS standard line weights and color coding for electrical and plumbing utilities.
+  2. Participants must develop a complete building design from the given problem statement, ensuring functional planning and standard compliance.
+  3. Day 1 requires submission of all 9 mandatory deliverables: Space planning, fully dimensioned floor plan, elevations, plumbing layout, electrical points, FSI calculation, construction notes, opening schedule, and design verification against NBC & ISO standards.
+  4. All drafting must be completed on designated lab systems using standard CAD software during allotted challenge slots.
+  5. Drawings must adhere strictly to National Building Code (NBC 2016) guidelines, FSI restrictions, and local municipal bye-laws.
+  6. Drawings must maintain proper CAD layer hierarchies, ISO standard line weights, and designated color coding for services.
 - **Registration Form:** [Direct Google Form Link](https://forms.gle/13BrzGNz1vbY3D3o8)
 - **Event Coordinators (For Queries):**
   - **Vrushank Shirsath:** [+91 8888909419](tel:+918888909419)
   - **Shruti S Pagaree:** [+91 8421711369](tel:+918421711369)
+
 
 ---
 
